@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { fetchVanilla } from "./api";
+import { fetchAbility, fetchVanilla } from "./api";
 import {
   clearCachedFiles,
   formatSavedAt,
@@ -15,6 +15,8 @@ import {
   evoLabel,
   fromApiStats,
   listMegas,
+  listForms,
+  formLabel,
   matchups,
   normalizeAbility,
   normalizeMove,
@@ -23,12 +25,20 @@ import {
   parseRandomJson,
   parseTypesPbs,
   parseItemsPbs,
+  parseAbilitiesPbs,
+  abilityInfo,
   listTmsForSpecies,
+  searchList,
+  groupPickups,
+  pickupKindLabel,
   tradesForOwned,
   tradeTooltip,
   typeColor,
   typeName,
 } from "./data";
+import defaultPickups from "./pickups.json";
+
+const SHOW_SEARCH = import.meta.env.VITE_SHOW_SEARCH === "true";
 
 const FILES = [
   {
@@ -85,6 +95,15 @@ const FILES = [
     hint: "Pokemon Anil V4.13\\PBS\\items.txt",
     why: "Catálogo de MTs/MOs. Si no lo subes, usamos las MTs que salgan en el JSON.",
   },
+  {
+    key: "abilities",
+    required: false,
+    title: "PBS de habilidades",
+    accept: ".txt,text/plain",
+    file: "abilities.txt",
+    hint: "Pokemon Anil V4.13\\PBS\\abilities.txt",
+    why: "Descripciones al pasar el cursor. Opcional.",
+  },
 ];
 
 function fileBasename(file) {
@@ -104,6 +123,7 @@ function identifyFile(file) {
   if (name === "moves.txt") return "moves";
   if (name === "types.txt") return "types";
   if (name === "items.txt") return "items";
+  if (name === "abilities.txt") return "abilities";
   return null;
 }
 
@@ -114,6 +134,7 @@ function readHash() {
     return { view: "pokemon", id: decodeURIComponent(rest.join("/")) };
   }
   if (head === "cambiados") return { view: "cambiados", id: "" };
+  if (head === "mapa") return { view: "mapa", id: "" };
   return { view: "equipo", id: "" };
 }
 
@@ -121,6 +142,7 @@ function writeHash(view, id) {
   let next = "#/equipo";
   if (view === "pokemon" && id) next = `#/p/${encodeURIComponent(id)}`;
   else if (view === "cambiados") next = "#/cambiados";
+  else if (view === "mapa") next = "#/mapa";
   if ((window.location.hash || "") !== next) window.location.hash = next;
 }
 
@@ -184,7 +206,106 @@ function buildDataset(texts) {
   const moves = parseMovesPbs(texts.moves?.text || "");
   const types = parseTypesPbs(texts.types?.text || "");
   const items = parseItemsPbs(texts.items?.text || "");
-  return { random, pbs, moves, types, items, meta: random };
+  const abilities = parseAbilitiesPbs(texts.abilities?.text || "");
+  return { random, pbs, moves, types, items, abilities, meta: random };
+}
+
+function SearchBox({ dataset, onPick }) {
+  const [q, setQ] = useState("");
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(0);
+  const boxRef = useRef(null);
+  const list = useMemo(
+    () => searchList(dataset.pbs, dataset.random?.species),
+    [dataset]
+  );
+  const hits = useMemo(() => {
+    const n = q.trim().toLowerCase();
+    if (!n) return [];
+    return list
+      .filter((p) => {
+        const hay = `${p.name} ${p.id} ${p.dex ?? ""}`.toLowerCase();
+        return hay.includes(n);
+      })
+      .slice(0, 14);
+  }, [list, q]);
+
+  useEffect(() => {
+    function onDoc(e) {
+      if (!boxRef.current?.contains(e.target)) setOpen(false);
+    }
+    document.addEventListener("mousedown", onDoc);
+    return () => document.removeEventListener("mousedown", onDoc);
+  }, []);
+
+  useEffect(() => {
+    setActive(0);
+  }, [q]);
+
+  function choose(id) {
+    onPick(id);
+    setQ("");
+    setOpen(false);
+  }
+
+  return (
+    <div className="search" ref={boxRef}>
+      <input
+        value={q}
+        onChange={(e) => {
+          setQ(e.target.value);
+          setOpen(true);
+        }}
+        onFocus={() => setOpen(true)}
+        onKeyDown={(e) => {
+          if (e.key === "Escape") {
+            setQ("");
+            setOpen(false);
+          } else if (e.key === "ArrowDown") {
+            e.preventDefault();
+            setActive((i) => Math.min(i + 1, Math.max(hits.length - 1, 0)));
+          } else if (e.key === "ArrowUp") {
+            e.preventDefault();
+            setActive((i) => Math.max(i - 1, 0));
+          } else if (e.key === "Enter" && hits[active]) {
+            e.preventDefault();
+            choose(hits[active].id);
+          }
+        }}
+        placeholder="Buscar Pokémon…"
+        aria-label="Buscar Pokémon"
+        autoComplete="off"
+      />
+      {q ? (
+        <button type="button" className="search-clear" onClick={() => setQ("")} aria-label="Limpiar búsqueda">
+          ×
+        </button>
+      ) : null}
+      {open && q.trim() ? (
+        <ul className="search-pop">
+          {hits.length === 0 ? (
+            <li>
+              <span className="search-empty">Sin resultados</span>
+            </li>
+          ) : (
+            hits.map((p, i) => (
+              <li key={p.id}>
+                <button
+                  type="button"
+                  className={i === active ? "on" : ""}
+                  onMouseEnter={() => setActive(i)}
+                  onClick={() => choose(p.id)}
+                >
+                  <span className="dexn">{p.dex ? String(p.dex).padStart(3, "0") : "—"}</span>
+                  <span>{p.name}</span>
+                </button>
+              </li>
+            ))
+          )}
+        </ul>
+      ) : null}
+    </div>
+  );
 }
 
 export default function App() {
@@ -205,6 +326,12 @@ export default function App() {
     writeHash("cambiados");
   }
 
+  function openMapa() {
+    setSelected("");
+    setView("mapa");
+    writeHash("mapa");
+  }
+
   function openEquipo() {
     setSelected("");
     setView("equipo");
@@ -218,7 +345,7 @@ export default function App() {
     writeHash("pokemon", id);
   }
 
-  async function applyTexts(texts, { persist } = {}) {
+  async function applyTexts(texts, { persist, resetView = true } = {}) {
     if (!texts?.random?.text || !texts?.pokemon?.text) {
       setError("Faltan archivos obligatorios: JSON del random y pokemon.txt.");
       return false;
@@ -230,12 +357,15 @@ export default function App() {
       moves: built.moves,
       types: built.types,
       items: built.items,
+      abilities: built.abilities,
       meta: built.random,
     });
-    setSelected("");
-    setView("equipo");
-    writeHash("equipo");
-    writeSavedSelected("");
+    if (resetView) {
+      setSelected("");
+      setView("equipo");
+      writeHash("equipo");
+      writeSavedSelected("");
+    }
     if (persist) {
       try {
         await saveCachedFiles(texts);
@@ -275,9 +405,16 @@ export default function App() {
     (async () => {
       try {
         const loaded = await loadCachedFiles();
-        if (live) setCached(loaded);
+        if (!live) return;
+        setCached(loaded);
+        if (loaded?.random?.text && loaded?.pokemon?.text) {
+          await applyTexts(loaded, { persist: false, resetView: false });
+        }
       } catch (e) {
-        if (live) setError(e.message || "No se pudo leer la caché del navegador.");
+        if (live) {
+          setError(e.message || "No se pudo leer la caché del navegador.");
+          setShowUpload(true);
+        }
       } finally {
         if (live) setHydrating(false);
       }
@@ -318,34 +455,29 @@ export default function App() {
   const hasCache = !!(cached?.random?.text && cached?.pokemon?.text);
 
   if (!dataset) {
-    if (showUpload || !hasCache) {
-      return (
-        <UploadScreen
-          onLoad={onLoad}
-          error={error}
-          initialCached={cached}
-          onBack={hasCache ? () => setShowUpload(false) : null}
-          onCacheCleared={() => {
-            setCached({});
-            setShowUpload(true);
-          }}
-        />
-      );
-    }
     return (
-      <HomeChooser
-        cached={cached}
-        onUseSaved={async () => {
-          setError("");
-          try {
-            await applyTexts(cached, { persist: false });
-          } catch (e) {
-            setError(e.message || "No se pudieron leer los datos guardados.");
-            setShowUpload(true);
-          }
-        }}
-        onChangeFiles={() => setShowUpload(true)}
+      <UploadScreen
+        onLoad={onLoad}
         error={error}
+        initialCached={cached}
+        onBack={
+          hasCache
+            ? async () => {
+                setShowUpload(false);
+                setError("");
+                try {
+                  await applyTexts(cached, { persist: false, resetView: false });
+                } catch (e) {
+                  setError(e.message || "No se pudieron leer los datos guardados.");
+                  setShowUpload(true);
+                }
+              }
+            : null
+        }
+        onCacheCleared={() => {
+          setCached({});
+          setShowUpload(true);
+        }}
       />
     );
   }
@@ -365,6 +497,7 @@ export default function App() {
             <h1>Random Atlas</h1>
           </div>
         </button>
+        {SHOW_SEARCH && <SearchBox dataset={dataset} onPick={openPokemon} />}
         <div className="top-actions">
           <button
             type="button"
@@ -381,10 +514,17 @@ export default function App() {
             Stats cambiadas
           </button>
           <button
+            type="button"
+            className={`ghost ${view === "mapa" ? "on" : ""}`}
+            onClick={openMapa}
+          >
+            Mapa
+          </button>
+          <button
             className="ghost"
             onClick={() => {
               setDataset(null);
-              setShowUpload(false);
+              setShowUpload(true);
             }}
           >
             Cambiar archivos
@@ -400,6 +540,8 @@ export default function App() {
           setTab={setTab}
           onPick={openPokemon}
         />
+      ) : view === "mapa" ? (
+        <MapPage dataset={dataset} />
       ) : (
         <OwnedPage
           dataset={dataset}
@@ -414,37 +556,6 @@ export default function App() {
 
 function cacheStamp(cached) {
   return Object.values(cached || {}).reduce((max, row) => Math.max(max, row.savedAt || 0), 0);
-}
-
-function HomeChooser({ cached, onUseSaved, onChangeFiles, error }) {
-  const savedAt = formatSavedAt(cacheStamp(cached));
-  const names = FILES.filter((f) => cached[f.key]).map((f) => cached[f.key].name || f.file);
-  return (
-    <div className="boot">
-      <div className="boot-glow" />
-      <section className="boot-card">
-        <p className="eyebrow">Carga tu semilla</p>
-        <h1>Atlas de tu partida random</h1>
-        <p className="lede">
-          Ya hay datos en este navegador{savedAt ? ` (${savedAt})` : ""}. Elige si
-          continuar con ellos o subir archivos nuevos.
-        </p>
-        <div className="choice-grid">
-          <button type="button" className="choice-card primary-card" onClick={onUseSaved}>
-            <span>Usar datos guardados</span>
-            <strong>Abrir el atlas</strong>
-            <small>{names.join(" · ") || "JSON y PBS en caché"}</small>
-          </button>
-          <button type="button" className="choice-card" onClick={onChangeFiles}>
-            <span>Cambiar archivos</span>
-            <strong>Subir o sustituir</strong>
-            <small>JSON nuevo, PBS o la carpeta completa</small>
-          </button>
-        </div>
-        {error && <p className="error">{error}</p>}
-      </section>
-    </div>
-  );
 }
 
 function UploadScreen({ onLoad, error, initialCached = {}, onBack, onCacheCleared }) {
@@ -597,6 +708,123 @@ function UploadScreen({ onLoad, error, initialCached = {}, onBack, onCacheCleare
           )}
         </div>
       </section>
+    </div>
+  );
+}
+
+const TOWN_COLS = 30;
+const TOWN_ROWS = 20;
+
+function MapPage({ dataset }) {
+  const exported = dataset.random?.pickups;
+  const pickups = exported?.length ? exported : defaultPickups;
+  const [remainingOnly, setRemainingOnly] = useState(true);
+  const [showItems, setShowItems] = useState(true);
+  const [showPokemon, setShowPokemon] = useState(true);
+  const [active, setActive] = useState(null);
+
+  const kinds = [];
+  if (showItems) kinds.push("item");
+  if (showPokemon) kinds.push("pokemon");
+
+  const groups = useMemo(
+    () => groupPickups(pickups || [], { remainingOnly, kinds }),
+    [pickups, remainingOnly, showItems, showPokemon]
+  );
+
+  const total = (pickups || []).reduce((n, p) => n + (Number(p.count) || 1), 0);
+  const left = (pickups || [])
+    .filter((p) => !p.taken && (p.region ?? 0) === 0)
+    .reduce((n, p) => n + (Number(p.count) || 1), 0);
+
+  return (
+    <div className="map-page">
+      <header className="owned-page-head">
+        <h2>Mapa de recogidas</h2>
+        <p>
+          Pokéballs del suelo y NPCs que entregan objeto o Pokémon. El objeto concreto
+          da igual: se marca el evento. Para tachar lo ya recogido, reinicia Añil,
+          guarda la partida y recarga el atlas.
+        </p>
+      </header>
+      {!pickups.length ? (
+        <p className="muted">No hay eventos de recogida con casilla en el mapa.</p>
+      ) : (
+        <>
+          <div className="map-toolbar">
+            <p className="map-count">
+              {exported?.length
+                ? `${left} pendientes · ${total} eventos`
+                : `${total} eventos en el ROM · guarda en Añil para marcar los recogidos`}
+            </p>
+            <div className="map-filters">
+              <label>
+                <input
+                  type="checkbox"
+                  checked={remainingOnly}
+                  onChange={(e) => setRemainingOnly(e.target.checked)}
+                />
+                Solo pendientes
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={showItems}
+                  onChange={(e) => setShowItems(e.target.checked)}
+                />
+                Objetos
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={showPokemon}
+                  onChange={(e) => setShowPokemon(e.target.checked)}
+                />
+                Pokémon
+              </label>
+            </div>
+          </div>
+          <div className="town-map">
+            <img src="/mapRegion0.png" alt="Mapa de Kanto en Añil" />
+            {groups.map((g) => {
+              const key = `${g.tx},${g.ty}`;
+              const hasItem = g.items.some((i) => (i.kinds || []).includes("item"));
+              const hasPkmn = g.items.some((i) => (i.kinds || []).includes("pokemon"));
+              const tone = hasItem && hasPkmn ? "mix" : hasPkmn ? "pkmn" : "item";
+              return (
+                <button
+                  key={key}
+                  type="button"
+                  className={`map-pin ${tone} ${active === key ? "on" : ""}`}
+                  style={{
+                    left: `${((g.tx + 0.5) / TOWN_COLS) * 100}%`,
+                    top: `${((g.ty + 0.5) / TOWN_ROWS) * 100}%`,
+                  }}
+                  onClick={() => setActive(active === key ? null : key)}
+                >
+                  {g.count}
+                </button>
+              );
+            })}
+          </div>
+          {active && (
+            <ul className="map-spot">
+              {groups
+                .find((g) => `${g.tx},${g.ty}` === active)
+                ?.items.map((ev) => (
+                  <li key={ev.id}>
+                    <strong>{ev.map || `Mapa ${ev.map_id}`}</strong>
+                    <span>
+                      {(ev.kinds || []).map(pickupKindLabel).join(" · ")}
+                      {ev.name ? ` · ${ev.name}` : ""}
+                      {ev.taken ? " · Recogido" : " · Pendiente"}
+                    </span>
+                  </li>
+                ))}
+            </ul>
+          )}
+        </>
+      )}
     </div>
   );
 }
@@ -917,6 +1145,7 @@ function PokemonPage({ id, dataset, tab, setTab, onPick }) {
   const rnd = dataset.random.species?.[id] || dataset.random.species?.[pbs.species] || {};
   const slugs = apiSlugs(pbs);
   const megas = listMegas(dataset.pbs, pbs.species);
+  const forms = listForms(dataset.pbs, pbs.species || id);
   const baseForm = dataset.pbs[pbs.species];
   const [vanilla, setVanilla] = useState(null);
 
@@ -963,25 +1192,35 @@ function PokemonPage({ id, dataset, tab, setTab, onPick }) {
             </span>
           ))}
         </div>
-        {megas.length > 0 && (
-          <div className="mega-row">
-            {pbs.isMega ? (
-              <button type="button" className="mega-chip ghost" onClick={() => onPick(pbs.species)}>
-                Ver forma base
-              </button>
-            ) : (
-              <span className="mega-label">Puede megaevolucionar</span>
-            )}
-            {megas.map((m) => (
-              <button
-                key={m.id}
-                type="button"
-                className={`mega-chip ${m.id === id ? "on" : ""}`}
-                onClick={() => onPick(m.id)}
+        {forms.length > 1 && (
+          <div className="form-row">
+            <span className="form-label">Forma</span>
+            {forms.length > 8 ? (
+              <select
+                className="form-select"
+                value={id}
+                onChange={(e) => onPick(e.target.value)}
               >
-                {m.formName || m.name}
-              </button>
-            ))}
+                {forms.map((f) => (
+                  <option key={f.id} value={f.id}>
+                    {formLabel(f)}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <div className="form-chips">
+                {forms.map((f) => (
+                  <button
+                    key={f.id}
+                    type="button"
+                    className={`mega-chip ${f.id === id ? "on" : ""}`}
+                    onClick={() => onPick(f.id)}
+                  >
+                    {formLabel(f)}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         )}
         <div className="art-wrap">
@@ -1009,6 +1248,7 @@ function PokemonPage({ id, dataset, tab, setTab, onPick }) {
             rnd={rnd}
             vanilla={vanilla}
             typesMap={dataset.types}
+            abilitiesMap={dataset.abilities}
             baseForm={baseForm}
           />
         ) : (
@@ -1098,7 +1338,7 @@ function EvolutionRibbon({ stages, dataset, current, onPick }) {
   );
 }
 
-function InfoTab({ pbs, rnd, vanilla, typesMap, baseForm }) {
+function InfoTab({ pbs, rnd, vanilla, typesMap, abilitiesMap, baseForm }) {
   const origBase = (rnd.original_base || []).map(normalizeAbility).filter(Boolean);
   const origHidden = (rnd.original_hidden || []).map(normalizeAbility).filter(Boolean);
   const randBase = (rnd.random_base || []).map(normalizeAbility).filter(Boolean);
@@ -1111,10 +1351,10 @@ function InfoTab({ pbs, rnd, vanilla, typesMap, baseForm }) {
   return (
     <div className="info">
       <Block title="Habilidades">
-        <AbilityCompare original={origBase} random={randBase} />
+        <AbilityCompare original={origBase} random={randBase} abilitiesMap={abilitiesMap} />
       </Block>
       <Block title="Habilidad oculta">
-        <AbilityCompare original={origHidden} random={randHidden} />
+        <AbilityCompare original={origHidden} random={randHidden} abilitiesMap={abilitiesMap} />
       </Block>
       {isMega && baseForm?.stats && (
         <Block
@@ -1166,7 +1406,48 @@ function InfoTab({ pbs, rnd, vanilla, typesMap, baseForm }) {
   );
 }
 
-function AbilityCompare({ original, random }) {
+function AbilityPill({ ability, fallback, abilitiesMap, className }) {
+  const shown = ability || fallback;
+  const extra = abilityInfo(abilitiesMap, shown);
+  const [remote, setRemote] = useState(null);
+
+  useEffect(() => {
+    let live = true;
+    if (extra?.description || !shown?.id) {
+      setRemote(null);
+      return undefined;
+    }
+    fetchAbility(shown.id).then((row) => {
+      if (live) setRemote(row);
+    });
+    return () => {
+      live = false;
+    };
+  }, [shown?.id, extra?.description]);
+
+  const name = shown?.name || extra?.name || "—";
+  const desc = extra?.description || remote?.description || "";
+  const [open, setOpen] = useState(false);
+  return (
+    <span
+      className={`pill ${className} ${desc ? "has-tip" : ""} ${open ? "is-open" : ""}`}
+      tabIndex={desc ? 0 : undefined}
+      onMouseEnter={() => {
+        if (desc) setOpen(true);
+      }}
+      onMouseLeave={() => setOpen(false)}
+      onFocus={() => {
+        if (desc) setOpen(true);
+      }}
+      onBlur={() => setOpen(false)}
+    >
+      {name}
+      {desc ? <span className="ability-tip">{desc}</span> : null}
+    </span>
+  );
+}
+
+function AbilityCompare({ original, random, abilitiesMap }) {
   if (!original.length && !random.length) return <p className="muted">Sin datos</p>;
   const n = Math.max(original.length, random.length, 1);
   return (
@@ -1177,9 +1458,9 @@ function AbilityCompare({ original, random }) {
         const changed = a && b && a.id !== b.id;
         return (
           <div key={i} className={`ability-pair ${changed ? "changed" : ""}`}>
-            <span className="pill ghost">{a?.name || "—"}</span>
+            <AbilityPill ability={a} abilitiesMap={abilitiesMap} className="ghost" />
             <span className="arrow">→</span>
-            <span className="pill hot">{b?.name || a?.name || "—"}</span>
+            <AbilityPill ability={b} fallback={a} abilitiesMap={abilitiesMap} className="hot" />
           </div>
         );
       })}

@@ -162,6 +162,19 @@ export function listMegas(pbsById, species) {
   return Object.values(pbsById).filter((e) => e.species === species && e.isMega);
 }
 
+export function listForms(pbsById, species) {
+  const key = baseSpeciesId(species);
+  return Object.values(pbsById)
+    .filter((e) => baseSpeciesId(e.species || e.id) === key)
+    .sort((a, b) => (a.form || 0) - (b.form || 0) || String(a.id).localeCompare(String(b.id)));
+}
+
+export function formLabel(entry) {
+  if (entry?.formName) return entry.formName;
+  if (entry?.isMega) return "Mega";
+  return "Forma base";
+}
+
 export function baseSpeciesId(id = "") {
   return String(id).split("_")[0].toUpperCase();
 }
@@ -341,6 +354,23 @@ export function parseMovesPbs(text) {
     };
   }
   return moves;
+}
+
+export function parseAbilitiesPbs(text) {
+  const abilities = {};
+  for (const { rawId, fields } of parsePbsSections(text)) {
+    abilities[rawId] = {
+      id: rawId,
+      name: fields.Name || prettyId(rawId),
+      description: fields.Description || "",
+    };
+  }
+  return abilities;
+}
+
+export function abilityInfo(abilitiesMap, ability) {
+  if (!ability?.id || !abilitiesMap) return null;
+  return abilitiesMap[ability.id] || abilitiesMap[String(ability.id).toUpperCase()] || null;
 }
 
 export function parseTypesPbs(text) {
@@ -566,6 +596,20 @@ const API_FORM_DEFAULTS = {
   gourgeist: ["gourgeist-average", "gourgeist-small", "gourgeist-large", "gourgeist-super"],
 };
 
+const API_FORM_BY_INDEX = {
+  LYCANROC: ["lycanroc-midday", "lycanroc-midnight", "lycanroc-dusk"],
+  MINIOR: {
+    0: "minior-red-meteor",
+    7: "minior-red",
+    8: "minior-orange",
+    9: "minior-yellow",
+    10: "minior-green",
+    11: "minior-blue",
+    12: "minior-indigo",
+    13: "minior-violet",
+  },
+};
+
 function formApiSuffix(formName = "") {
   const f = formName
     .toLowerCase()
@@ -594,8 +638,16 @@ function formApiSuffix(formName = "") {
     ["resolute", /resolut/],
     ["pirouette", /pirueta|pirouette/],
     ["aria", /\baria\b|lirica/],
-    ["midday", /diurno|midday/],
-    ["midnight", /nocturno|midnight/],
+    ["midday", /diurn[oa]|midday/],
+    ["midnight", /nocturn[oa]|midnight/],
+    ["red", /nucleo rojo/],
+    ["orange", /nucleo naranja/],
+    ["yellow", /nucleo amarillo/],
+    ["green", /nucleo verde/],
+    ["blue", /nucleo azul/],
+    ["indigo", /nucleo (anil|indigo)/],
+    ["violet", /nucleo violeta/],
+    ["meteor", /meteorito|meteor/],
     ["dusk", /crepuscular|\bdusk\b/],
     ["school", /banco|school/],
     ["solo", /\bsolo\b/],
@@ -643,6 +695,12 @@ export function apiSlugs(pbs = {}) {
   const region = pbs.region || "";
   const slugs = [];
   const suffix = formApiSuffix(formName);
+  const speciesKey = String(pbs.species || String(speciesId).split("_")[0] || "").toUpperCase();
+  const byIndex = API_FORM_BY_INDEX[speciesKey];
+  const indexed =
+    byIndex &&
+    (Array.isArray(byIndex) ? byIndex[pbs.form || 0] : byIndex[pbs.form || 0]);
+  if (indexed) slugs.push(indexed);
 
   if (pbs.isMega || /mega/i.test(formName) || stone) {
     const blob = `${formName} ${stone}`.toLowerCase();
@@ -673,17 +731,53 @@ export function apiSlugs(pbs = {}) {
 
 export function searchList(pbsById, randomSpecies) {
   const keys = new Set([...Object.keys(pbsById), ...Object.keys(randomSpecies || {})]);
+  const seen = new Set();
   return [...keys]
     .map((id) => {
       const pbs = pbsById[id];
       const rnd = randomSpecies?.[id];
+      const species = pbs?.species || String(id).split("_")[0];
+      const form = pbs?.form ?? (String(id).includes("_") ? 1 : 0);
       return {
-        id,
-        name: pbs?.name || rnd?.name || prettyId(id),
-        formName: pbs?.formName || "",
-        dex: pbs?.dex,
+        id: form === 0 ? species : id,
+        species,
+        form,
+        name: pbs?.name || rnd?.name || prettyId(species),
+        dex: form === 0 ? pbs?.dex : pbsById[species]?.dex || pbs?.dex,
         types: pbs?.types || [],
       };
     })
+    .filter((p) => {
+      if (p.form !== 0) return false;
+      const key = String(p.species || p.id).toUpperCase();
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    })
     .sort((a, b) => (a.dex || 9999) - (b.dex || 9999) || a.name.localeCompare(b.name, "es"));
+}
+
+export function pickupKindLabel(kind) {
+  if (kind === "pokemon") return "Pokémon";
+  return "Objeto";
+}
+
+export function groupPickups(pickups = [], { remainingOnly = true, kinds = null } = {}) {
+  const allow = kinds?.length ? new Set(kinds) : null;
+  const rows = pickups.filter((p) => {
+    if ((p.region ?? 0) !== 0) return false;
+    if (p.tx == null || p.ty == null) return false;
+    if (remainingOnly && p.taken) return false;
+    if (allow && !(p.kinds || []).some((k) => allow.has(k))) return false;
+    return true;
+  });
+  const groups = new Map();
+  for (const p of rows) {
+    const key = `${p.tx},${p.ty}`;
+    if (!groups.has(key)) groups.set(key, { tx: p.tx, ty: p.ty, items: [], count: 0 });
+    const g = groups.get(key);
+    g.items.push(p);
+    g.count += Number(p.count) || 1;
+  }
+  return [...groups.values()];
 }
