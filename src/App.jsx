@@ -717,6 +717,12 @@ function UploadScreen({ onLoad, error, initialCached = {}, onBack, onCacheCleare
 
 const TOWN_COLS = 30;
 const TOWN_ROWS = 20;
+const PIN_NUDGE = {
+  item: [0, 0],
+  pokemon: [0.32, 0],
+  nest: [-0.32, 0],
+  leader: [0, 0.38],
+};
 
 function MapPage({ dataset }) {
   const exported = dataset.random?.pickups;
@@ -813,15 +819,16 @@ function MapPage({ dataset }) {
           <div className="town-map">
             <img src="/mapRegion0.png" alt="Mapa de Kanto en Añil" />
             {groups.map((g) => {
-              const key = `${g.tx},${g.ty}`;
+              const key = `${g.tx},${g.ty},${g.kind}`;
+              const nudge = PIN_NUDGE[g.kind] || [0, 0];
               return (
                 <button
                   key={key}
                   type="button"
                   className={`map-pin ${g.tone} ${g.allTaken ? "is-taken" : ""} ${active === key ? "on" : ""}`}
                   style={{
-                    left: `${((g.tx + 0.5) / TOWN_COLS) * 100}%`,
-                    top: `${((g.ty + 0.5) / TOWN_ROWS) * 100}%`,
+                    left: `${((g.tx + 0.5 + nudge[0]) / TOWN_COLS) * 100}%`,
+                    top: `${((g.ty + 0.5 + nudge[1]) / TOWN_ROWS) * 100}%`,
                   }}
                   onClick={() => setActive(active === key ? null : key)}
                 >
@@ -833,7 +840,7 @@ function MapPage({ dataset }) {
           {active && (
             <ul className="map-spot">
               {groups
-                .find((g) => `${g.tx},${g.ty}` === active)
+                .find((g) => `${g.tx},${g.ty},${g.kind}` === active)
                 ?.items.map((ev) => (
                   <li key={ev.id} className={ev.taken ? "is-taken" : ""}>
                     <strong>{ev.map || `Mapa ${ev.map_id}`}</strong>

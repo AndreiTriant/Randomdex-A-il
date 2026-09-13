@@ -815,14 +815,11 @@ export function isIgnoredPickup(p = {}) {
 
 export function mergePickups(exported, defaults = []) {
   if (!exported?.length) return defaults;
-  const hasNew = exported.some((p) =>
-    (p.kinds || []).some((k) => k === "nest" || k === "leader")
+  const have = new Set(exported.flatMap((p) => p.kinds || []));
+  const extras = defaults.filter((p) =>
+    (p.kinds || []).some((k) => (k === "nest" || k === "leader") && !have.has(k))
   );
-  if (hasNew) return exported;
-  return [
-    ...exported,
-    ...defaults.filter((p) => (p.kinds || []).some((k) => k === "nest" || k === "leader")),
-  ];
+  return extras.length ? [...exported, ...extras] : exported;
 }
 
 export function groupPickups(pickups = [], { remainingOnly = true, kinds = null } = {}) {
@@ -837,9 +834,12 @@ export function groupPickups(pickups = [], { remainingOnly = true, kinds = null 
   });
   const groups = new Map();
   for (const p of rows) {
-    const key = `${p.tx},${p.ty}`;
+    const kind =
+      PICKUP_KINDS.map((k) => k.id).find((id) => (p.kinds || []).includes(id)) ||
+      "item";
+    const key = `${p.tx},${p.ty},${kind}`;
     if (!groups.has(key)) {
-      groups.set(key, { tx: p.tx, ty: p.ty, items: [], count: 0, takenCount: 0 });
+      groups.set(key, { tx: p.tx, ty: p.ty, kind, items: [], count: 0, takenCount: 0 });
     }
     const g = groups.get(key);
     g.items.push(p);
@@ -849,7 +849,7 @@ export function groupPickups(pickups = [], { remainingOnly = true, kinds = null 
   }
   return [...groups.values()].map((g) => ({
     ...g,
-    tone: pickupTone(g.items.flatMap((i) => i.kinds || [])),
+    tone: pickupTone([g.kind]),
     allTaken: g.takenCount > 0 && g.takenCount === g.count,
   }));
 }
