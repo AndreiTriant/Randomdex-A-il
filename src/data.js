@@ -757,14 +757,78 @@ export function searchList(pbsById, randomSpecies) {
     .sort((a, b) => (a.dex || 9999) - (b.dex || 9999) || a.name.localeCompare(b.name, "es"));
 }
 
+export const PICKUP_KINDS = [
+  {
+    id: "item",
+    label: "Objetos",
+    tone: "item",
+    blurb: "Pokéballs del suelo y NPCs que dan un objeto.",
+    taken: "Al recogerlos el pin pasa a × y la ficha sale tachada.",
+  },
+  {
+    id: "pokemon",
+    label: "Pokémon",
+    tone: "pkmn",
+    blurb: "NPCs que te dan un Pokémon. Los intercambios no cuentan.",
+    taken: "Igual que los objetos: el pin pasa a × al recogerlos.",
+  },
+  {
+    id: "nest",
+    label: "Nidos Alfa",
+    tone: "nest",
+    blurb: "Nidos con un Pokémon fuerte. No son pokéballs.",
+    taken: "El pin pasa a × al vaciar el nido. Puede volver con Cristal Prisma.",
+  },
+  {
+    id: "leader",
+    label: "Líderes exóticos",
+    tone: "leader",
+    blurb: "Líderes de Hoenn que dan combate (y a veces objeto).",
+    taken: "El pin pasa a × al ganar el combate.",
+  },
+];
+
 export function pickupKindLabel(kind) {
-  if (kind === "pokemon") return "Pokémon";
-  return "Objeto";
+  return PICKUP_KINDS.find((k) => k.id === kind)?.label || "Objeto";
+}
+
+export function pickupTone(kinds = []) {
+  const known = PICKUP_KINDS.map((k) => k.id).filter((id) => kinds.includes(id));
+  if (known.length === 1) return PICKUP_KINDS.find((k) => k.id === known[0]).tone;
+  if (known.length > 1) return "mix";
+  return "item";
+}
+
+const TRADE_ONLY_MAPS = new Set([34, 36, 38, 50, 53, 61, 78, 148, 176, 180]);
+
+export function isIgnoredPickup(p = {}) {
+  const blob = `${p.name || ""} ${p.id || ""} ${(p.kinds || []).join(" ")}`;
+  if (/fotograf|partypicture|albumfotos|pbStartTrade|TradePC|intercambi/i.test(blob)) {
+    return true;
+  }
+  const kinds = p.kinds || [];
+  if (TRADE_ONLY_MAPS.has(Number(p.map_id)) && kinds.includes("pokemon") && !kinds.includes("item")) {
+    return true;
+  }
+  return false;
+}
+
+export function mergePickups(exported, defaults = []) {
+  if (!exported?.length) return defaults;
+  const hasNew = exported.some((p) =>
+    (p.kinds || []).some((k) => k === "nest" || k === "leader")
+  );
+  if (hasNew) return exported;
+  return [
+    ...exported,
+    ...defaults.filter((p) => (p.kinds || []).some((k) => k === "nest" || k === "leader")),
+  ];
 }
 
 export function groupPickups(pickups = [], { remainingOnly = true, kinds = null } = {}) {
   const allow = kinds?.length ? new Set(kinds) : null;
   const rows = pickups.filter((p) => {
+    if (isIgnoredPickup(p)) return false;
     if ((p.region ?? 0) !== 0) return false;
     if (p.tx == null || p.ty == null) return false;
     if (remainingOnly && p.taken) return false;
@@ -774,10 +838,18 @@ export function groupPickups(pickups = [], { remainingOnly = true, kinds = null 
   const groups = new Map();
   for (const p of rows) {
     const key = `${p.tx},${p.ty}`;
-    if (!groups.has(key)) groups.set(key, { tx: p.tx, ty: p.ty, items: [], count: 0 });
+    if (!groups.has(key)) {
+      groups.set(key, { tx: p.tx, ty: p.ty, items: [], count: 0, takenCount: 0 });
+    }
     const g = groups.get(key);
     g.items.push(p);
-    g.count += Number(p.count) || 1;
+    const n = Number(p.count) || 1;
+    g.count += n;
+    if (p.taken) g.takenCount += n;
   }
-  return [...groups.values()];
+  return [...groups.values()].map((g) => ({
+    ...g,
+    tone: pickupTone(g.items.flatMap((i) => i.kinds || [])),
+    allTaken: g.takenCount > 0 && g.takenCount === g.count,
+  }));
 }

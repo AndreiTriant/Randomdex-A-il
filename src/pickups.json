@@ -1,2360 +1,3054 @@
 [
   {
-    "id": "2",
     "map_id": 2,
     "map": "Pueblo Paleta",
-    "kinds": [
-      "item"
-    ],
-    "count": 3,
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 14
+    "ty": 14,
+    "id": "2-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 3
   },
   {
-    "id": "3",
     "map_id": 3,
     "map": "Ruta 1",
-    "kinds": [
-      "item"
-    ],
-    "count": 5,
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 11
+    "ty": 11,
+    "id": "3-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 5
   },
   {
-    "id": "4",
     "map_id": 4,
     "map": "Ciudad Verde",
-    "kinds": [
-      "item"
-    ],
-    "count": 6,
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 10
-  },
-  {
-    "id": "5",
-    "map_id": 5,
-    "map": "Ruta 20",
+    "ty": 10,
+    "id": "4-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 4,
+    "count": 6
+  },
+  {
+    "map_id": 5,
+    "map": "Ruta 20",
     "taken": false,
     "region": 0,
     "tx": 4,
-    "ty": 10
+    "ty": 10,
+    "id": "5-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 4
   },
   {
-    "id": "6",
     "map_id": 6,
     "map": "Ruta 2 Sur",
-    "kinds": [
-      "item"
-    ],
-    "count": 5,
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 8
+    "ty": 8,
+    "id": "6-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 2
   },
   {
-    "id": "7",
+    "map_id": 6,
+    "map": "Ruta 2 Sur",
+    "taken": false,
+    "region": 0,
+    "tx": 7,
+    "ty": 8,
+    "id": "6-nest",
+    "name": "Nido Alfa",
+    "kinds": [
+      "nest"
+    ],
+    "count": 1
+  },
+  {
     "map_id": 7,
     "map": "Ruta 2 Norte",
-    "kinds": [
-      "item"
-    ],
-    "count": 3,
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 5
+    "ty": 5,
+    "id": "7-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 3
   },
   {
-    "id": "8",
     "map_id": 8,
     "map": "Bosque Verde",
-    "kinds": [
-      "item"
-    ],
-    "count": 8,
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 7
+    "ty": 7,
+    "id": "8-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 5
   },
   {
-    "id": "9",
+    "map_id": 8,
+    "map": "Bosque Verde",
+    "taken": false,
+    "region": 0,
+    "tx": 7,
+    "ty": 7,
+    "id": "8-nest",
+    "name": "Nido Alfa",
+    "kinds": [
+      "nest"
+    ],
+    "count": 1
+  },
+  {
     "map_id": 9,
     "map": "Ciudad Plateada",
-    "kinds": [
-      "item",
-      "pokemon"
-    ],
-    "count": 12,
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 4
-  },
-  {
-    "id": "10",
-    "map_id": 10,
-    "map": "Ruta 3",
+    "ty": 4,
+    "id": "9-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 4,
+    "count": 10
+  },
+  {
+    "map_id": 9,
+    "map": "Ciudad Plateada",
+    "taken": false,
+    "region": 0,
+    "tx": 7,
+    "ty": 4,
+    "id": "9-pokemon",
+    "name": "Pokémon",
+    "kinds": [
+      "pokemon"
+    ],
+    "count": 1
+  },
+  {
+    "map_id": 10,
+    "map": "Ruta 3",
     "taken": false,
     "region": 0,
     "tx": 8,
-    "ty": 4
+    "ty": 4,
+    "id": "10-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 4
   },
   {
-    "id": "11",
     "map_id": 11,
     "map": "Monte Moon",
-    "kinds": [
-      "item"
-    ],
-    "count": 7,
     "taken": false,
     "region": 0,
     "tx": 13,
-    "ty": 2
+    "ty": 2,
+    "id": "11-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 7
   },
   {
-    "id": "12",
     "map_id": 12,
     "map": "Monte Moon Exterior",
-    "kinds": [
-      "item"
-    ],
-    "count": 8,
     "taken": false,
     "region": 0,
     "tx": 13,
-    "ty": 2
+    "ty": 2,
+    "id": "12-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 4
   },
   {
-    "id": "13",
+    "map_id": 12,
+    "map": "Monte Moon Exterior",
+    "taken": false,
+    "region": 0,
+    "tx": 13,
+    "ty": 2,
+    "id": "12-nest",
+    "name": "Nido Alfa",
+    "kinds": [
+      "nest"
+    ],
+    "count": 1
+  },
+  {
     "map_id": 13,
     "map": "Monte Moon",
-    "kinds": [
-      "item"
-    ],
-    "count": 7,
     "taken": false,
     "region": 0,
     "tx": 13,
-    "ty": 2
-  },
-  {
-    "id": "14",
-    "map_id": 14,
-    "map": "Ruta 4",
+    "ty": 2,
+    "id": "13-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 13,
+    "count": 7
+  },
+  {
+    "map_id": 14,
+    "map": "Ruta 4",
     "taken": false,
     "region": 0,
     "tx": 14,
-    "ty": 2
+    "ty": 2,
+    "id": "14-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 10
   },
   {
-    "id": "15",
+    "map_id": 14,
+    "map": "Ruta 4",
+    "taken": false,
+    "region": 0,
+    "tx": 14,
+    "ty": 2,
+    "id": "14-nest",
+    "name": "Nido Alfa",
+    "kinds": [
+      "nest"
+    ],
+    "count": 1
+  },
+  {
     "map_id": 15,
     "map": "Ciudad Celeste",
-    "kinds": [
-      "item"
-    ],
-    "count": 3,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 2
+    "ty": 2,
+    "id": "15-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 3
   },
   {
-    "id": "16",
     "map_id": 16,
     "map": "Ruta 20",
-    "kinds": [
-      "item"
-    ],
-    "count": 11,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 0
+    "ty": 0,
+    "id": "16-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 8
   },
   {
-    "id": "17",
+    "map_id": 16,
+    "map": "Ruta 20",
+    "taken": false,
+    "region": 0,
+    "tx": 17,
+    "ty": 0,
+    "id": "16-nest",
+    "name": "Nido Alfa",
+    "kinds": [
+      "nest"
+    ],
+    "count": 1
+  },
+  {
     "map_id": 17,
     "map": "Ruta 5",
-    "kinds": [
-      "item"
-    ],
-    "count": 6,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 3
+    "ty": 3,
+    "id": "17-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 6
   },
   {
-    "id": "18",
     "map_id": 18,
     "map": "Ruta 6",
-    "kinds": [
-      "item"
-    ],
-    "count": 10,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 7
+    "ty": 7,
+    "id": "18-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 10
   },
   {
-    "id": "19",
     "map_id": 19,
     "map": "Ciudad Carmín",
-    "kinds": [
-      "item"
-    ],
-    "count": 4,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 12
-  },
-  {
-    "id": "20",
-    "map_id": 20,
-    "map": "Ruta 15",
+    "ty": 12,
+    "id": "19-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 11,
+    "count": 4
+  },
+  {
+    "map_id": 20,
+    "map": "Ruta 15",
     "taken": false,
     "region": 0,
     "tx": 18,
-    "ty": 12
-  },
-  {
-    "id": "21",
-    "map_id": 21,
-    "map": "Túnel Diglett",
+    "ty": 12,
+    "id": "20-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 3,
+    "count": 11
+  },
+  {
+    "map_id": 20,
+    "map": "Ruta 15",
+    "taken": false,
+    "region": 0,
+    "tx": 18,
+    "ty": 12,
+    "id": "20-leader",
+    "name": "Líder exótico",
+    "kinds": [
+      "leader"
+    ],
+    "count": 1
+  },
+  {
+    "map_id": 21,
+    "map": "Túnel Diglett",
     "taken": false,
     "region": 0,
     "tx": 16,
-    "ty": 15
-  },
-  {
-    "id": "22",
-    "map_id": 22,
-    "map": "Ruta 9",
+    "ty": 15,
+    "id": "21-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 8,
+    "count": 3
+  },
+  {
+    "map_id": 22,
+    "map": "Ruta 9",
     "taken": false,
     "region": 0,
     "tx": 18,
-    "ty": 2
+    "ty": 2,
+    "id": "22-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 8
   },
   {
-    "id": "23",
     "map_id": 23,
     "map": "Ruta 10 Norte",
-    "kinds": [
-      "item"
-    ],
-    "count": 12,
     "taken": false,
     "region": 0,
     "tx": 23,
-    "ty": 2
+    "ty": 2,
+    "id": "23-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 6
   },
   {
-    "id": "24",
+    "map_id": 23,
+    "map": "Ruta 10 Norte",
+    "taken": false,
+    "region": 0,
+    "tx": 23,
+    "ty": 2,
+    "id": "23-nest",
+    "name": "Nido Alfa",
+    "kinds": [
+      "nest"
+    ],
+    "count": 2
+  },
+  {
     "map_id": 24,
     "map": "Ruta 10 Sur",
-    "kinds": [
-      "item"
-    ],
-    "count": 6,
     "taken": false,
     "region": 0,
     "tx": 23,
-    "ty": 4
+    "ty": 4,
+    "id": "24-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 6
   },
   {
-    "id": "25",
     "map_id": 25,
     "map": "Túnel Roca",
-    "kinds": [
-      "item"
-    ],
-    "count": 6,
     "taken": false,
     "region": 0,
     "tx": 23,
-    "ty": 3
+    "ty": 3,
+    "id": "25-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 6
   },
   {
-    "id": "26",
     "map_id": 26,
     "map": "Túnel Roca",
-    "kinds": [
-      "item"
-    ],
-    "count": 6,
     "taken": false,
     "region": 0,
     "tx": 23,
-    "ty": 3
+    "ty": 3,
+    "id": "26-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 6
   },
   {
-    "id": "27",
     "map_id": 27,
     "map": "Pueblo Lavanda",
-    "kinds": [
-      "item"
-    ],
-    "count": 1,
     "taken": false,
     "region": 0,
     "tx": 23,
-    "ty": 6
+    "ty": 6,
+    "id": "27-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 1
   },
   {
-    "id": "28",
     "map_id": 28,
     "map": "Casa",
-    "kinds": [
-      "item",
-      "pokemon"
-    ],
-    "count": 7,
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 14
+    "ty": 14,
+    "id": "28-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 4
   },
   {
-    "id": "29",
+    "map_id": 28,
+    "map": "Casa",
+    "taken": false,
+    "region": 0,
+    "tx": 7,
+    "ty": 14,
+    "id": "28-pokemon",
+    "name": "Pokémon",
+    "kinds": [
+      "pokemon"
+    ],
+    "count": 3
+  },
+  {
     "map_id": 29,
     "map": "Laboratorio",
-    "kinds": [
-      "item",
-      "pokemon"
-    ],
-    "count": 14,
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 14
+    "ty": 14,
+    "id": "29-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 3
   },
   {
-    "id": "30",
+    "map_id": 29,
+    "map": "Laboratorio",
+    "taken": false,
+    "region": 0,
+    "tx": 7,
+    "ty": 14,
+    "id": "29-pokemon",
+    "name": "Pokémon",
+    "kinds": [
+      "pokemon"
+    ],
+    "count": 11
+  },
+  {
     "map_id": 30,
     "map": "Casa",
-    "kinds": [
-      "item",
-      "pokemon"
-    ],
-    "count": 8,
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 10
+    "ty": 10,
+    "id": "30-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 2
   },
   {
-    "id": "32",
+    "map_id": 30,
+    "map": "Casa",
+    "taken": false,
+    "region": 0,
+    "tx": 7,
+    "ty": 10,
+    "id": "30-pokemon",
+    "name": "Pokémon",
+    "kinds": [
+      "pokemon"
+    ],
+    "count": 6
+  },
+  {
     "map_id": 32,
     "map": "Escuela",
-    "kinds": [
-      "item"
-    ],
-    "count": 2,
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 10
+    "ty": 10,
+    "id": "32-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 2
   },
   {
-    "id": "33",
     "map_id": 33,
     "map": "Transición",
-    "kinds": [
-      "item"
-    ],
-    "count": 1,
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 7
+    "ty": 7,
+    "id": "33-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 1
   },
   {
-    "id": "34",
     "map_id": 34,
     "map": "Casa",
-    "kinds": [
-      "item",
-      "pokemon"
-    ],
-    "count": 2,
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 6
-  },
-  {
-    "id": "36",
-    "map_id": 36,
-    "map": "Centro Pokémon",
+    "ty": 6,
+    "id": "34-item",
+    "name": "Objetos",
     "kinds": [
-      "pokemon"
+      "item"
     ],
-    "count": 1,
-    "taken": false,
-    "region": 0,
-    "tx": 7,
-    "ty": 4
+    "count": 1
   },
   {
-    "id": "37",
     "map_id": 37,
     "map": "Casa",
-    "kinds": [
-      "item"
-    ],
-    "count": 2,
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 4
+    "ty": 4,
+    "id": "37-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 2
   },
   {
-    "id": "38",
     "map_id": 38,
     "map": "Casa",
-    "kinds": [
-      "item",
-      "pokemon"
-    ],
-    "count": 4,
     "taken": false,
     "region": 0,
     "tx": 13,
-    "ty": 6
+    "ty": 6,
+    "id": "38-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 3
   },
   {
-    "id": "39",
     "map_id": 39,
     "map": "Casino Azulona",
-    "kinds": [
-      "item"
-    ],
-    "count": 4,
     "taken": false,
     "region": 0,
     "tx": 13,
-    "ty": 6
+    "ty": 6,
+    "id": "39-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 4
   },
   {
-    "id": "40",
+    "map_id": 39,
+    "map": "Casino Azulona",
+    "taken": false,
+    "region": 0,
+    "tx": 13,
+    "ty": 6,
+    "id": "39-leader",
+    "name": "Líder exótico",
+    "kinds": [
+      "leader"
+    ],
+    "count": 1
+  },
+  {
     "map_id": 40,
     "map": "Museo Pokémon",
-    "kinds": [
-      "item",
-      "pokemon"
-    ],
-    "count": 7,
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 4
+    "ty": 4,
+    "id": "40-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 5
   },
   {
-    "id": "42",
+    "map_id": 40,
+    "map": "Museo Pokémon",
+    "taken": false,
+    "region": 0,
+    "tx": 7,
+    "ty": 4,
+    "id": "40-pokemon",
+    "name": "Pokémon",
+    "kinds": [
+      "pokemon"
+    ],
+    "count": 2
+  },
+  {
+    "map_id": 40,
+    "map": "Museo Pokémon",
+    "taken": false,
+    "region": 0,
+    "tx": 7,
+    "ty": 4,
+    "id": "40-leader",
+    "name": "Líder exótico",
+    "kinds": [
+      "leader"
+    ],
+    "count": 1
+  },
+  {
     "map_id": 42,
     "map": "Gimnasio Pokémon",
-    "kinds": [
-      "item"
-    ],
-    "count": 9,
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 4
+    "ty": 4,
+    "id": "42-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 9
   },
   {
-    "id": "44",
     "map_id": 44,
     "map": "Caravana",
-    "kinds": [
-      "item"
-    ],
-    "count": 1,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 0
+    "ty": 0,
+    "id": "44-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 1
   },
   {
-    "id": "45",
     "map_id": 45,
     "map": "Casa",
-    "kinds": [
-      "item"
-    ],
-    "count": 3,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 2
+    "ty": 2,
+    "id": "45-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 3
   },
   {
-    "id": "50",
     "map_id": 50,
     "map": "Casa",
-    "kinds": [
-      "item",
-      "pokemon"
-    ],
-    "count": 2,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 12
-  },
-  {
-    "id": "53",
-    "map_id": 53,
-    "map": "Casa",
+    "ty": 12,
+    "id": "50-item",
+    "name": "Objetos",
     "kinds": [
-      "pokemon"
+      "item"
     ],
-    "count": 1,
-    "taken": false,
-    "region": 0,
-    "tx": 23,
-    "ty": 3
+    "count": 1
   },
   {
-    "id": "54",
     "map_id": 54,
     "map": "Casa",
-    "kinds": [
-      "item"
-    ],
-    "count": 2,
     "taken": false,
     "region": 0,
     "tx": 23,
-    "ty": 6
+    "ty": 6,
+    "id": "54-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 2
   },
   {
-    "id": "55",
     "map_id": 55,
     "map": "Subterráneo",
-    "kinds": [
-      "item"
-    ],
-    "count": 2,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 5
+    "ty": 5,
+    "id": "55-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 2
   },
   {
-    "id": "56",
     "map_id": 56,
     "map": "Gimnasio Pokémon",
-    "kinds": [
-      "item"
-    ],
-    "count": 9,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 12
+    "ty": 12,
+    "id": "56-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 9
   },
   {
-    "id": "57",
     "map_id": 57,
     "map": "Gimnasio Pokémon",
-    "kinds": [
-      "item"
-    ],
-    "count": 8,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 2
+    "ty": 2,
+    "id": "57-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 8
   },
   {
-    "id": "58",
     "map_id": 58,
     "map": "S.S Anne",
-    "kinds": [
-      "item"
-    ],
-    "count": 5,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 12
+    "ty": 12,
+    "id": "58-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 4
   },
   {
-    "id": "59",
     "map_id": 59,
     "map": "S.S Anne",
-    "kinds": [
-      "item"
-    ],
-    "count": 6,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 12
+    "ty": 12,
+    "id": "59-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 6
   },
   {
-    "id": "60",
     "map_id": 60,
     "map": "Tienda de Bicis",
+    "taken": false,
+    "region": 0,
+    "tx": 17,
+    "ty": 2,
+    "id": "60-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 1,
-    "taken": false,
-    "region": 0,
-    "tx": 17,
-    "ty": 2
+    "count": 1
   },
   {
-    "id": "61",
-    "map_id": 61,
-    "map": "Cafetería",
-    "kinds": [
-      "pokemon"
-    ],
-    "count": 6,
-    "taken": false,
-    "region": 0,
-    "tx": 17,
-    "ty": 2
-  },
-  {
-    "id": "62",
     "map_id": 62,
     "map": "Casa de Bill",
-    "kinds": [
-      "item"
-    ],
-    "count": 1,
     "taken": false,
     "region": 0,
     "tx": 21,
-    "ty": 0
-  },
-  {
-    "id": "63",
-    "map_id": 63,
-    "map": "Club de Fans Pokémon",
+    "ty": 0,
+    "id": "62-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 1,
+    "count": 1
+  },
+  {
+    "map_id": 63,
+    "map": "Club de Fans Pokémon",
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 12
+    "ty": 12,
+    "id": "63-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 1
   },
   {
-    "id": "64",
     "map_id": 64,
     "map": "Torre Pokémon",
-    "kinds": [
-      "item"
-    ],
-    "count": 11,
     "taken": false,
     "region": 0,
     "tx": 23,
-    "ty": 6
+    "ty": 6,
+    "id": "64-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 11
   },
   {
-    "id": "65",
     "map_id": 65,
     "map": "Torre Pokémon",
-    "kinds": [
-      "item"
-    ],
-    "count": 2,
     "taken": false,
     "region": 0,
     "tx": 23,
-    "ty": 6
+    "ty": 6,
+    "id": "65-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 2
   },
   {
-    "id": "67",
     "map_id": 67,
     "map": "Refugio Fuji",
-    "kinds": [
-      "item"
-    ],
-    "count": 2,
     "taken": false,
     "region": 0,
     "tx": 23,
-    "ty": 6
-  },
-  {
-    "id": "68",
-    "map_id": 68,
-    "map": "Transición",
+    "ty": 6,
+    "id": "67-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 1,
+    "count": 2
+  },
+  {
+    "map_id": 68,
+    "map": "Transición",
     "taken": false,
     "region": 0,
     "tx": 22,
-    "ty": 12
-  },
-  {
-    "id": "69",
-    "map_id": 69,
-    "map": "Ciudad Carmín",
+    "ty": 12,
+    "id": "68-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 1,
+    "count": 1
+  },
+  {
+    "map_id": 69,
+    "map": "Ciudad Carmín",
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 12
+    "ty": 12,
+    "id": "69-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 1
   },
   {
-    "id": "70",
     "map_id": 70,
     "map": "Centro Pokémon",
-    "kinds": [
-      "pokemon"
-    ],
-    "count": 1,
     "taken": false,
     "region": 0,
     "tx": 13,
-    "ty": 3
+    "ty": 3,
+    "id": "70-pokemon",
+    "name": "Pokémon",
+    "kinds": [
+      "pokemon"
+    ],
+    "count": 1
   },
   {
-    "id": "71",
     "map_id": 71,
     "map": "Ruta 8",
-    "kinds": [
-      "item"
-    ],
-    "count": 10,
     "taken": false,
     "region": 0,
     "tx": 18,
-    "ty": 6
-  },
-  {
-    "id": "72",
-    "map_id": 72,
-    "map": "Ruta 7",
+    "ty": 6,
+    "id": "71-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 2,
+    "count": 6
+  },
+  {
+    "map_id": 71,
+    "map": "Ruta 8",
+    "taken": false,
+    "region": 0,
+    "tx": 18,
+    "ty": 6,
+    "id": "71-nest",
+    "name": "Nido Alfa",
+    "kinds": [
+      "nest"
+    ],
+    "count": 1
+  },
+  {
+    "map_id": 72,
+    "map": "Ruta 7",
     "taken": false,
     "region": 0,
     "tx": 14,
-    "ty": 6
-  },
-  {
-    "id": "73",
-    "map_id": 73,
-    "map": "Transición",
+    "ty": 6,
+    "id": "72-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 1,
+    "count": 2
+  },
+  {
+    "map_id": 73,
+    "map": "Transición",
     "taken": false,
     "region": 0,
     "tx": 18,
-    "ty": 6
+    "ty": 6,
+    "id": "73-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 1
   },
   {
-    "id": "74",
     "map_id": 74,
     "map": "Transición",
-    "kinds": [
-      "item"
-    ],
-    "count": 1,
     "taken": false,
     "region": 0,
     "tx": 16,
-    "ty": 6
+    "ty": 6,
+    "id": "74-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 1
   },
   {
-    "id": "75",
     "map_id": 75,
     "map": "Subterráneo",
-    "kinds": [
-      "item"
-    ],
-    "count": 4,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 6
+    "ty": 6,
+    "id": "75-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 4
   },
   {
-    "id": "76",
     "map_id": 76,
     "map": "Ciudad Azulona",
-    "kinds": [
-      "item"
-    ],
-    "count": 4,
     "taken": false,
     "region": 0,
     "tx": 13,
-    "ty": 6
+    "ty": 6,
+    "id": "76-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 3
   },
   {
-    "id": "78",
     "map_id": 78,
     "map": "Centro Comercial",
-    "kinds": [
-      "item",
-      "pokemon"
-    ],
-    "count": 4,
     "taken": false,
     "region": 0,
     "tx": 13,
-    "ty": 6
+    "ty": 6,
+    "id": "78-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 3
   },
   {
-    "id": "79",
     "map_id": 79,
     "map": "Restaurante de Ramen",
-    "kinds": [
-      "item"
-    ],
-    "count": 2,
     "taken": false,
     "region": 0,
     "tx": 13,
-    "ty": 6
+    "ty": 6,
+    "id": "79-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 2
   },
   {
-    "id": "80",
     "map_id": 80,
     "map": "Edificio Azulona",
+    "taken": false,
+    "region": 0,
+    "tx": 13,
+    "ty": 6,
+    "id": "80-item",
+    "name": "Objetos",
     "kinds": [
-      "item",
+      "item"
+    ],
+    "count": 2
+  },
+  {
+    "map_id": 80,
+    "map": "Edificio Azulona",
+    "taken": false,
+    "region": 0,
+    "tx": 13,
+    "ty": 6,
+    "id": "80-pokemon",
+    "name": "Pokémon",
+    "kinds": [
       "pokemon"
     ],
-    "count": 3,
-    "taken": false,
-    "region": 0,
-    "tx": 13,
-    "ty": 6
+    "count": 1
   },
   {
-    "id": "81",
     "map_id": 81,
     "map": "Gimnasio Pokémon",
-    "kinds": [
-      "item"
-    ],
-    "count": 8,
     "taken": false,
     "region": 0,
     "tx": 13,
-    "ty": 6
+    "ty": 6,
+    "id": "81-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 8
   },
   {
-    "id": "82",
     "map_id": 82,
     "map": "Guarida Rocket",
-    "kinds": [
-      "item"
-    ],
-    "count": 3,
     "taken": false,
     "region": 0,
     "tx": 13,
-    "ty": 6
+    "ty": 6,
+    "id": "82-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 3
   },
   {
-    "id": "83",
     "map_id": 83,
     "map": "Guarida Rocket",
-    "kinds": [
-      "item"
-    ],
-    "count": 3,
     "taken": false,
     "region": 0,
     "tx": 13,
-    "ty": 6
+    "ty": 6,
+    "id": "83-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 3
   },
   {
-    "id": "84",
     "map_id": 84,
     "map": "Guarida Rocket",
-    "kinds": [
-      "item"
-    ],
-    "count": 3,
     "taken": false,
     "region": 0,
     "tx": 13,
-    "ty": 6
+    "ty": 6,
+    "id": "84-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 3
   },
   {
-    "id": "85",
     "map_id": 85,
     "map": "Guarida Rocket",
-    "kinds": [
-      "item"
-    ],
-    "count": 4,
     "taken": false,
     "region": 0,
     "tx": 13,
-    "ty": 6
-  },
-  {
-    "id": "86",
-    "map_id": 86,
-    "map": "Ruta 12",
+    "ty": 6,
+    "id": "85-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 3,
+    "count": 4
+  },
+  {
+    "map_id": 86,
+    "map": "Ruta 12",
     "taken": false,
     "region": 0,
     "tx": 23,
-    "ty": 7
-  },
-  {
-    "id": "87",
-    "map_id": 87,
-    "map": "Ruta 11",
+    "ty": 7,
+    "id": "86-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 12,
+    "count": 3
+  },
+  {
+    "map_id": 87,
+    "map": "Ruta 11",
     "taken": false,
     "region": 0,
     "tx": 11,
-    "ty": 6
-  },
-  {
-    "id": "88",
-    "map_id": 88,
-    "map": "Transición",
+    "ty": 6,
+    "id": "87-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 2,
+    "count": 9
+  },
+  {
+    "map_id": 87,
+    "map": "Ruta 11",
+    "taken": false,
+    "region": 0,
+    "tx": 11,
+    "ty": 6,
+    "id": "87-nest",
+    "name": "Nido Alfa",
+    "kinds": [
+      "nest"
+    ],
+    "count": 1
+  },
+  {
+    "map_id": 88,
+    "map": "Transición",
     "taken": false,
     "region": 0,
     "tx": 12,
-    "ty": 6
-  },
-  {
-    "id": "89",
-    "map_id": 89,
-    "map": "Casa",
+    "ty": 6,
+    "id": "88-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 2,
+    "count": 2
+  },
+  {
+    "map_id": 89,
+    "map": "Casa",
     "taken": false,
     "region": 0,
     "tx": 23,
-    "ty": 13
-  },
-  {
-    "id": "90",
-    "map_id": 90,
-    "map": "Casa",
+    "ty": 13,
+    "id": "89-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 1,
+    "count": 2
+  },
+  {
+    "map_id": 90,
+    "map": "Casa",
     "taken": false,
     "region": 0,
     "tx": 11,
-    "ty": 6
+    "ty": 6,
+    "id": "90-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 1
   },
   {
-    "id": "91",
     "map_id": 91,
     "map": "Pueblo Marengo",
-    "kinds": [
-      "item"
-    ],
-    "count": 25,
     "taken": false,
     "region": 0,
     "tx": 23,
-    "ty": 14
+    "ty": 14,
+    "id": "91-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 25
   },
   {
-    "id": "92",
     "map_id": 92,
     "map": "Ruta 13",
-    "kinds": [
-      "item"
-    ],
-    "count": 7,
     "taken": false,
     "region": 0,
     "tx": 23,
-    "ty": 15
-  },
-  {
-    "id": "93",
-    "map_id": 93,
-    "map": "Ruta 14",
+    "ty": 15,
+    "id": "92-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 4,
+    "count": 4
+  },
+  {
+    "map_id": 92,
+    "map": "Ruta 13",
+    "taken": false,
+    "region": 0,
+    "tx": 23,
+    "ty": 15,
+    "id": "92-nest",
+    "name": "Nido Alfa",
+    "kinds": [
+      "nest"
+    ],
+    "count": 1
+  },
+  {
+    "map_id": 93,
+    "map": "Ruta 14",
     "taken": false,
     "region": 0,
     "tx": 16,
-    "ty": 16
+    "ty": 16,
+    "id": "93-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 4
   },
   {
-    "id": "94",
     "map_id": 94,
     "map": "Ciudad Fucsia",
-    "kinds": [
-      "item"
-    ],
-    "count": 10,
     "taken": false,
     "region": 0,
     "tx": 15,
-    "ty": 16
+    "ty": 16,
+    "id": "94-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 9
   },
   {
-    "id": "95",
+    "map_id": 94,
+    "map": "Ciudad Fucsia",
+    "taken": false,
+    "region": 0,
+    "tx": 15,
+    "ty": 16,
+    "id": "94-leader",
+    "name": "Líder exótico",
+    "kinds": [
+      "leader"
+    ],
+    "count": 1
+  },
+  {
     "map_id": 95,
     "map": "Ruta 16",
-    "kinds": [
-      "item"
-    ],
-    "count": 7,
     "taken": false,
     "region": 0,
     "tx": 12,
-    "ty": 16
+    "ty": 16,
+    "id": "95-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 7
   },
   {
-    "id": "96",
     "map_id": 96,
     "map": "Transición",
-    "kinds": [
-      "item"
-    ],
-    "count": 1,
     "taken": false,
     "region": 0,
     "tx": 12,
-    "ty": 16
+    "ty": 16,
+    "id": "96-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 1
   },
   {
-    "id": "97",
     "map_id": 97,
     "map": "Ruta 17",
-    "kinds": [
-      "item"
-    ],
-    "count": 6,
     "taken": false,
     "region": 0,
     "tx": 15,
-    "ty": 17
+    "ty": 17,
+    "id": "97-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 6
   },
   {
-    "id": "98",
     "map_id": 98,
     "map": "Transición",
-    "kinds": [
-      "item"
-    ],
-    "count": 2,
     "taken": false,
     "region": 0,
     "tx": 15,
-    "ty": 17
+    "ty": 17,
+    "id": "98-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 2
   },
   {
-    "id": "99",
     "map_id": 99,
     "map": "Ciudad Azafrán",
-    "kinds": [
-      "item"
-    ],
-    "count": 7,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 6
+    "ty": 6,
+    "id": "99-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 6
   },
   {
-    "id": "100",
     "map_id": 100,
     "map": "Silph S.A",
-    "kinds": [
-      "item"
-    ],
-    "count": 6,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 6
+    "ty": 6,
+    "id": "100-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 6
   },
   {
-    "id": "101",
     "map_id": 101,
     "map": "Silph S.A",
-    "kinds": [
-      "item"
-    ],
-    "count": 20,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 6
+    "ty": 6,
+    "id": "101-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 20
   },
   {
-    "id": "102",
     "map_id": 102,
     "map": "Silph S.A",
-    "kinds": [
-      "item",
-      "pokemon"
-    ],
-    "count": 17,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 6
-  },
-  {
-    "id": "105",
-    "map_id": 105,
-    "map": "Ruta 18",
+    "ty": 6,
+    "id": "102-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 6,
+    "count": 16
+  },
+  {
+    "map_id": 102,
+    "map": "Silph S.A",
+    "taken": false,
+    "region": 0,
+    "tx": 17,
+    "ty": 6,
+    "id": "102-pokemon",
+    "name": "Pokémon",
+    "kinds": [
+      "pokemon"
+    ],
+    "count": 1
+  },
+  {
+    "map_id": 105,
+    "map": "Ruta 18",
     "taken": false,
     "region": 0,
     "tx": 8,
-    "ty": 18
-  },
-  {
-    "id": "106",
-    "map_id": 106,
-    "map": "Ruta 19",
+    "ty": 18,
+    "id": "105-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 8,
+    "count": 3
+  },
+  {
+    "map_id": 105,
+    "map": "Ruta 18",
+    "taken": false,
+    "region": 0,
+    "tx": 8,
+    "ty": 18,
+    "id": "105-nest",
+    "name": "Nido Alfa",
+    "kinds": [
+      "nest"
+    ],
+    "count": 1
+  },
+  {
+    "map_id": 106,
+    "map": "Ruta 19",
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 15
-  },
-  {
-    "id": "107",
-    "map_id": 107,
-    "map": "Ruta 3",
+    "ty": 15,
+    "id": "106-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 3,
+    "count": 5
+  },
+  {
+    "map_id": 106,
+    "map": "Ruta 19",
+    "taken": false,
+    "region": 0,
+    "tx": 7,
+    "ty": 15,
+    "id": "106-nest",
+    "name": "Nido Alfa",
+    "kinds": [
+      "nest"
+    ],
+    "count": 1
+  },
+  {
+    "map_id": 107,
+    "map": "Ruta 3",
     "taken": false,
     "region": 0,
     "tx": 13,
-    "ty": 3
-  },
-  {
-    "id": "108",
-    "map_id": 108,
-    "map": "Ruta 12",
+    "ty": 3,
+    "id": "107-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 4,
+    "count": 3
+  },
+  {
+    "map_id": 108,
+    "map": "Ruta 12",
     "taken": false,
     "region": 0,
     "tx": 23,
-    "ty": 13
-  },
-  {
-    "id": "109",
-    "map_id": 109,
-    "map": "Ruta 21",
+    "ty": 13,
+    "id": "108-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 8,
+    "count": 4
+  },
+  {
+    "map_id": 109,
+    "map": "Ruta 21",
     "taken": false,
     "region": 0,
     "tx": 18,
-    "ty": 0
+    "ty": 0,
+    "id": "109-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 7
   },
   {
-    "id": "110",
+    "map_id": 109,
+    "map": "Ruta 21",
+    "taken": false,
+    "region": 0,
+    "tx": 18,
+    "ty": 0,
+    "id": "109-leader",
+    "name": "Líder exótico",
+    "kinds": [
+      "leader"
+    ],
+    "count": 1
+  },
+  {
     "map_id": 110,
     "map": "Camino de Bicis",
-    "kinds": [
-      "item"
-    ],
-    "count": 4,
     "taken": false,
     "region": 0,
     "tx": 11,
-    "ty": 7
+    "ty": 7,
+    "id": "110-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 1
   },
   {
-    "id": "111",
+    "map_id": 110,
+    "map": "Camino de Bicis",
+    "taken": false,
+    "region": 0,
+    "tx": 11,
+    "ty": 7,
+    "id": "110-nest",
+    "name": "Nido Alfa",
+    "kinds": [
+      "nest"
+    ],
+    "count": 1
+  },
+  {
     "map_id": 111,
     "map": "Camino de Bicis",
-    "kinds": [
-      "item"
-    ],
-    "count": 1,
     "taken": false,
     "region": 0,
     "tx": 11,
-    "ty": 12
+    "ty": 12,
+    "id": "111-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 1
   },
   {
-    "id": "112",
     "map_id": 112,
     "map": "Zona Safari",
-    "kinds": [
-      "item"
-    ],
-    "count": 8,
     "taken": false,
     "region": 0,
     "tx": 16,
-    "ty": 15
+    "ty": 15,
+    "id": "112-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 5
   },
   {
-    "id": "113",
+    "map_id": 112,
+    "map": "Zona Safari",
+    "taken": false,
+    "region": 0,
+    "tx": 16,
+    "ty": 15,
+    "id": "112-nest",
+    "name": "Nido Alfa",
+    "kinds": [
+      "nest"
+    ],
+    "count": 1
+  },
+  {
     "map_id": 113,
     "map": "Zona Safari",
-    "kinds": [
-      "item"
-    ],
-    "count": 4,
     "taken": false,
     "region": 0,
     "tx": 16,
-    "ty": 15
+    "ty": 15,
+    "id": "113-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 4
   },
   {
-    "id": "114",
     "map_id": 114,
     "map": "Zona Safari",
-    "kinds": [
-      "item"
-    ],
-    "count": 7,
     "taken": false,
     "region": 0,
     "tx": 16,
-    "ty": 15
+    "ty": 15,
+    "id": "114-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 4
   },
   {
-    "id": "115",
+    "map_id": 114,
+    "map": "Zona Safari",
+    "taken": false,
+    "region": 0,
+    "tx": 16,
+    "ty": 15,
+    "id": "114-nest",
+    "name": "Nido Alfa",
+    "kinds": [
+      "nest"
+    ],
+    "count": 1
+  },
+  {
     "map_id": 115,
     "map": "Zona Safari",
-    "kinds": [
-      "item"
-    ],
-    "count": 5,
     "taken": false,
     "region": 0,
     "tx": 16,
-    "ty": 15
-  },
-  {
-    "id": "116",
-    "map_id": 116,
-    "map": "Isla Canela",
+    "ty": 15,
+    "id": "115-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 14,
+    "count": 5
+  },
+  {
+    "map_id": 116,
+    "map": "Isla Canela",
     "taken": false,
     "region": 0,
     "tx": 6,
-    "ty": 18
+    "ty": 18,
+    "id": "116-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 10
   },
   {
-    "id": "117",
+    "map_id": 116,
+    "map": "Isla Canela",
+    "taken": false,
+    "region": 0,
+    "tx": 6,
+    "ty": 18,
+    "id": "116-nest",
+    "name": "Nido Alfa",
+    "kinds": [
+      "nest"
+    ],
+    "count": 1
+  },
+  {
+    "map_id": 116,
+    "map": "Isla Canela",
+    "taken": false,
+    "region": 0,
+    "tx": 6,
+    "ty": 18,
+    "id": "116-leader",
+    "name": "Líder exótico",
+    "kinds": [
+      "leader"
+    ],
+    "count": 1
+  },
+  {
     "map_id": 117,
     "map": "Dojo Azafrán",
-    "kinds": [
-      "item",
-      "pokemon"
-    ],
-    "count": 6,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 6
+    "ty": 6,
+    "id": "117-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 4
   },
   {
-    "id": "118",
+    "map_id": 117,
+    "map": "Dojo Azafrán",
+    "taken": false,
+    "region": 0,
+    "tx": 17,
+    "ty": 6,
+    "id": "117-pokemon",
+    "name": "Pokémon",
+    "kinds": [
+      "pokemon"
+    ],
+    "count": 2
+  },
+  {
+    "map_id": 117,
+    "map": "Dojo Azafrán",
+    "taken": false,
+    "region": 0,
+    "tx": 17,
+    "ty": 6,
+    "id": "117-leader",
+    "name": "Líder exótico",
+    "kinds": [
+      "leader"
+    ],
+    "count": 1
+  },
+  {
     "map_id": 118,
     "map": "Laboratorio Canela",
-    "kinds": [
-      "item",
-      "pokemon"
-    ],
-    "count": 11,
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 18
+    "ty": 18,
+    "id": "118-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 1
   },
   {
-    "id": "119",
+    "map_id": 118,
+    "map": "Laboratorio Canela",
+    "taken": false,
+    "region": 0,
+    "tx": 7,
+    "ty": 18,
+    "id": "118-pokemon",
+    "name": "Pokémon",
+    "kinds": [
+      "pokemon"
+    ],
+    "count": 4
+  },
+  {
     "map_id": 119,
     "map": "Mansión Quemada",
-    "kinds": [
-      "item"
-    ],
-    "count": 5,
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 18
+    "ty": 18,
+    "id": "119-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 5
   },
   {
-    "id": "120",
     "map_id": 120,
     "map": "Mansión Quemada",
-    "kinds": [
-      "item"
-    ],
-    "count": 4,
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 18
+    "ty": 18,
+    "id": "120-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 4
   },
   {
-    "id": "121",
     "map_id": 121,
     "map": "Mansión Quemada",
-    "kinds": [
-      "item"
-    ],
-    "count": 5,
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 18
+    "ty": 18,
+    "id": "121-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 5
   },
   {
-    "id": "122",
     "map_id": 122,
     "map": "Mansión Quemada",
-    "kinds": [
-      "item"
-    ],
-    "count": 5,
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 18
+    "ty": 18,
+    "id": "122-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 5
   },
   {
-    "id": "125",
     "map_id": 125,
     "map": "Gimnasio Pokémon",
-    "kinds": [
-      "item"
-    ],
-    "count": 10,
     "taken": false,
     "region": 0,
     "tx": 15,
-    "ty": 16
+    "ty": 16,
+    "id": "125-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 10
   },
   {
-    "id": "126",
     "map_id": 126,
     "map": "Centro Pokémon",
-    "kinds": [
-      "item"
-    ],
-    "count": 1,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 6
+    "ty": 6,
+    "id": "126-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 1
   },
   {
-    "id": "127",
     "map_id": 127,
     "map": "Gimnasio Pokémon",
-    "kinds": [
-      "item"
-    ],
-    "count": 8,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 6
+    "ty": 6,
+    "id": "127-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 8
   },
   {
-    "id": "128",
     "map_id": 128,
     "map": "Gimnasio Pokémon",
-    "kinds": [
-      "item"
-    ],
-    "count": 1,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 6
+    "ty": 6,
+    "id": "128-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 1
   },
   {
-    "id": "131",
     "map_id": 131,
     "map": "Gimnasio Pokémon",
-    "kinds": [
-      "item"
-    ],
-    "count": 10,
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 18
+    "ty": 18,
+    "id": "131-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 10
   },
   {
-    "id": "133",
     "map_id": 133,
     "map": "Islas Espuma",
-    "kinds": [
-      "item"
-    ],
-    "count": 4,
     "taken": false,
     "region": 0,
     "tx": 12,
-    "ty": 18
+    "ty": 18,
+    "id": "133-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 4
   },
   {
-    "id": "134",
     "map_id": 134,
     "map": "Islas Espuma",
-    "kinds": [
-      "item"
-    ],
-    "count": 2,
     "taken": false,
     "region": 0,
     "tx": 12,
-    "ty": 18
+    "ty": 18,
+    "id": "134-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 2
   },
   {
-    "id": "135",
     "map_id": 135,
     "map": "Islas Espuma",
-    "kinds": [
-      "item"
-    ],
-    "count": 5,
     "taken": false,
     "region": 0,
     "tx": 12,
-    "ty": 18
+    "ty": 18,
+    "id": "135-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 5
   },
   {
-    "id": "136",
     "map_id": 136,
     "map": "Islas Espuma",
-    "kinds": [
-      "item"
-    ],
-    "count": 4,
     "taken": false,
     "region": 0,
     "tx": 12,
-    "ty": 18
-  },
-  {
-    "id": "137",
-    "map_id": 137,
-    "map": "Transición",
+    "ty": 18,
+    "id": "136-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 1,
+    "count": 4
+  },
+  {
+    "map_id": 137,
+    "map": "Transición",
     "taken": false,
     "region": 0,
     "tx": 16,
-    "ty": 16
-  },
-  {
-    "id": "138",
-    "map_id": 138,
-    "map": "Casa",
+    "ty": 16,
+    "id": "137-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 3,
+    "count": 1
+  },
+  {
+    "map_id": 138,
+    "map": "Casa",
     "taken": false,
     "region": 0,
     "tx": 23,
-    "ty": 14
-  },
-  {
-    "id": "139",
-    "map_id": 139,
-    "map": "Casa",
+    "ty": 14,
+    "id": "138-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 1,
+    "count": 3
+  },
+  {
+    "map_id": 139,
+    "map": "Casa",
     "taken": false,
     "region": 0,
     "tx": 15,
-    "ty": 16
-  },
-  {
-    "id": "140",
-    "map_id": 140,
-    "map": "Casa",
+    "ty": 16,
+    "id": "139-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 2,
+    "count": 1
+  },
+  {
+    "map_id": 140,
+    "map": "Casa",
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 18
+    "ty": 18,
+    "id": "140-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 2
   },
   {
-    "id": "141",
     "map_id": 141,
     "map": "Casa",
-    "kinds": [
-      "item"
-    ],
-    "count": 4,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 6
+    "ty": 6,
+    "id": "141-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 4
   },
   {
-    "id": "142",
     "map_id": 142,
     "map": "Tienda Exótica",
-    "kinds": [
-      "item"
-    ],
-    "count": 1,
     "taken": false,
     "region": 0,
     "tx": 15,
-    "ty": 16
+    "ty": 16,
+    "id": "142-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 1
   },
   {
-    "id": "143",
     "map_id": 143,
     "map": "Casa del Guarda",
-    "kinds": [
-      "item"
-    ],
-    "count": 2,
     "taken": false,
     "region": 0,
     "tx": 15,
-    "ty": 16
+    "ty": 16,
+    "id": "143-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 2
   },
   {
-    "id": "144",
     "map_id": 144,
     "map": "Casa del Sr. Psíquico",
-    "kinds": [
-      "item"
-    ],
-    "count": 2,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 6
+    "ty": 6,
+    "id": "144-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 2
   },
   {
-    "id": "145",
     "map_id": 145,
     "map": "Estación del Magnetotrén",
-    "kinds": [
-      "item"
-    ],
-    "count": 2,
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 6
-  },
-  {
-    "id": "146",
-    "map_id": 146,
-    "map": "Granja Marengo",
+    "ty": 6,
+    "id": "145-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 1,
+    "count": 2
+  },
+  {
+    "map_id": 146,
+    "map": "Granja Marengo",
     "taken": false,
     "region": 0,
     "tx": 23,
-    "ty": 14
+    "ty": 14,
+    "id": "146-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 1
   },
   {
-    "id": "148",
     "map_id": 148,
     "map": "Zona Safari",
-    "kinds": [
-      "item",
-      "pokemon"
-    ],
-    "count": 14,
     "taken": false,
     "region": 0,
     "tx": 16,
-    "ty": 15
+    "ty": 15,
+    "id": "148-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 5
   },
   {
-    "id": "149",
     "map_id": 149,
     "map": "Zona Safari",
-    "kinds": [
-      "item"
-    ],
-    "count": 1,
     "taken": false,
     "region": 0,
     "tx": 16,
-    "ty": 15
-  },
-  {
-    "id": "150",
-    "map_id": 150,
-    "map": "Central Energía",
+    "ty": 15,
+    "id": "149-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 9,
+    "count": 1
+  },
+  {
+    "map_id": 150,
+    "map": "Central Energía",
     "taken": false,
     "region": 0,
     "tx": 24,
-    "ty": 4
+    "ty": 4,
+    "id": "150-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 9
   },
   {
-    "id": "151",
     "map_id": 151,
     "map": "Volcán Canela",
-    "kinds": [
-      "item"
-    ],
-    "count": 3,
     "taken": false,
     "region": 0,
     "tx": 6,
-    "ty": 18
+    "ty": 18,
+    "id": "151-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 3
   },
   {
-    "id": "152",
     "map_id": 152,
     "map": "Volcán Canela",
-    "kinds": [
-      "item"
-    ],
-    "count": 7,
     "taken": false,
     "region": 0,
     "tx": 6,
-    "ty": 18
+    "ty": 18,
+    "id": "152-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 7
   },
   {
-    "id": "153",
     "map_id": 153,
     "map": "Volcán Canela",
-    "kinds": [
-      "item"
-    ],
-    "count": 1,
     "taken": false,
     "region": 0,
     "tx": 6,
-    "ty": 18
+    "ty": 18,
+    "id": "153-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 1
   },
   {
-    "id": "154",
     "map_id": 154,
     "map": "Ruta 21",
-    "kinds": [
-      "item"
-    ],
-    "count": 6,
     "taken": false,
     "region": 0,
     "tx": 3,
-    "ty": 9
+    "ty": 9,
+    "id": "154-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 5
   },
   {
-    "id": "155",
     "map_id": 155,
     "map": "Ruta 22",
-    "kinds": [
-      "item"
-    ],
-    "count": 6,
     "taken": false,
     "region": 0,
     "tx": 0,
-    "ty": 14
+    "ty": 14,
+    "id": "155-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 3
   },
   {
-    "id": "156",
+    "map_id": 155,
+    "map": "Ruta 22",
+    "taken": false,
+    "region": 0,
+    "tx": 0,
+    "ty": 14,
+    "id": "155-nest",
+    "name": "Nido Alfa",
+    "kinds": [
+      "nest"
+    ],
+    "count": 1
+  },
+  {
     "map_id": 156,
     "map": "Ruta 22",
-    "kinds": [
-      "item"
-    ],
-    "count": 3,
     "taken": false,
     "region": 0,
     "tx": 2,
-    "ty": 14
+    "ty": 14,
+    "id": "156-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 3
   },
   {
-    "id": "157",
     "map_id": 157,
     "map": "Cataratas Tohjo",
-    "kinds": [
-      "item"
-    ],
-    "count": 3,
     "taken": false,
     "region": 0,
     "tx": 0,
-    "ty": 13
+    "ty": 13,
+    "id": "157-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 3
   },
   {
-    "id": "158",
     "map_id": 158,
     "map": "Ruta 23",
-    "kinds": [
-      "item"
-    ],
-    "count": 17,
     "taken": false,
     "region": 0,
     "tx": 1,
-    "ty": 9
+    "ty": 9,
+    "id": "158-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 14
   },
   {
-    "id": "160",
+    "map_id": 158,
+    "map": "Ruta 23",
+    "taken": false,
+    "region": 0,
+    "tx": 1,
+    "ty": 9,
+    "id": "158-nest",
+    "name": "Nido Alfa",
+    "kinds": [
+      "nest"
+    ],
+    "count": 1
+  },
+  {
+    "map_id": 158,
+    "map": "Ruta 23",
+    "taken": false,
+    "region": 0,
+    "tx": 1,
+    "ty": 9,
+    "id": "158-leader",
+    "name": "Líder exótico",
+    "kinds": [
+      "leader"
+    ],
+    "count": 1
+  },
+  {
     "map_id": 160,
     "map": "Monte Plateado",
-    "kinds": [
-      "item"
-    ],
-    "count": 2,
     "taken": false,
     "region": 0,
     "tx": 6,
-    "ty": 11
+    "ty": 11,
+    "id": "160-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 2
   },
   {
-    "id": "161",
     "map_id": 161,
     "map": "Monte Plateado",
-    "kinds": [
-      "item"
-    ],
-    "count": 2,
     "taken": false,
     "region": 0,
     "tx": 6,
-    "ty": 11
+    "ty": 11,
+    "id": "161-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 2
   },
   {
-    "id": "162",
     "map_id": 162,
     "map": "Monte Plateado",
-    "kinds": [
-      "item"
-    ],
-    "count": 5,
     "taken": false,
     "region": 0,
     "tx": 6,
-    "ty": 11
-  },
-  {
-    "id": "163",
-    "map_id": 163,
-    "map": "Monte Plateado",
+    "ty": 11,
+    "id": "162-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 7,
+    "count": 5
+  },
+  {
+    "map_id": 163,
+    "map": "Monte Plateado",
     "taken": false,
     "region": 0,
     "tx": 1,
-    "ty": 8
-  },
-  {
-    "id": "164",
-    "map_id": 164,
-    "map": "Monte Plateado",
+    "ty": 8,
+    "id": "163-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 2,
+    "count": 7
+  },
+  {
+    "map_id": 164,
+    "map": "Monte Plateado",
     "taken": false,
     "region": 0,
     "tx": 6,
-    "ty": 11
+    "ty": 11,
+    "id": "164-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 2
   },
   {
-    "id": "166",
     "map_id": 166,
     "map": "Ruta 25",
-    "kinds": [
-      "item"
-    ],
-    "count": 11,
     "taken": false,
     "region": 0,
     "tx": 3,
-    "ty": 3
+    "ty": 3,
+    "id": "166-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 11
   },
   {
-    "id": "167",
     "map_id": 167,
     "map": "Ciudad Añil",
-    "kinds": [
-      "item"
-    ],
-    "count": 4,
     "taken": false,
     "region": 0,
     "tx": 3,
-    "ty": 2
+    "ty": 2,
+    "id": "167-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 3
   },
   {
-    "id": "168",
     "map_id": 168,
     "map": "Cueva Celeste",
-    "kinds": [
-      "item"
-    ],
-    "count": 4,
     "taken": false,
     "region": 0,
     "tx": 16,
-    "ty": 1
+    "ty": 1,
+    "id": "168-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 4
   },
   {
-    "id": "169",
     "map_id": 169,
     "map": "Cueva Celeste",
-    "kinds": [
-      "item"
-    ],
-    "count": 8,
     "taken": false,
     "region": 0,
     "tx": 16,
-    "ty": 1
+    "ty": 1,
+    "id": "169-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 8
   },
   {
-    "id": "170",
     "map_id": 170,
     "map": "Cueva Celeste",
-    "kinds": [
-      "item"
-    ],
-    "count": 4,
     "taken": false,
     "region": 0,
     "tx": 16,
-    "ty": 1
+    "ty": 1,
+    "id": "170-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 4
   },
   {
-    "id": "174",
     "map_id": 174,
     "map": "Bosque Celeste",
-    "kinds": [
-      "item"
-    ],
-    "count": 4,
     "taken": false,
     "region": 0,
     "tx": 16,
-    "ty": 1
-  },
-  {
-    "id": "175",
-    "map_id": 175,
-    "map": "Casa",
+    "ty": 1,
+    "id": "174-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 2,
+    "count": 4
+  },
+  {
+    "map_id": 175,
+    "map": "Casa",
     "taken": false,
     "region": 0,
     "tx": 0,
-    "ty": 14
+    "ty": 14,
+    "id": "175-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 2
   },
   {
-    "id": "176",
     "map_id": 176,
     "map": "Casa",
-    "kinds": [
-      "item",
-      "pokemon"
-    ],
-    "count": 2,
     "taken": false,
     "region": 0,
     "tx": 2,
-    "ty": 9
+    "ty": 9,
+    "id": "176-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 1
   },
   {
-    "id": "177",
     "map_id": 177,
     "map": "Casa",
-    "kinds": [
-      "item"
-    ],
-    "count": 3,
     "taken": false,
     "region": 0,
     "tx": 2,
-    "ty": 2
-  },
-  {
-    "id": "178",
-    "map_id": 178,
-    "map": "Claro Secreto",
+    "ty": 2,
+    "id": "177-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 3,
+    "count": 3
+  },
+  {
+    "map_id": 178,
+    "map": "Claro Secreto",
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 7
-  },
-  {
-    "id": "179",
-    "map_id": 179,
-    "map": "Guarida Rocket",
+    "ty": 7,
+    "id": "178-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 1,
+    "count": 2
+  },
+  {
+    "map_id": 179,
+    "map": "Guarida Rocket",
     "taken": false,
     "region": 0,
     "tx": 13,
-    "ty": 6
+    "ty": 6,
+    "id": "179-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 1
   },
   {
-    "id": "180",
     "map_id": 180,
     "map": "Hostal Añil",
-    "kinds": [
-      "item",
-      "pokemon"
-    ],
-    "count": 7,
     "taken": false,
     "region": 0,
     "tx": 3,
-    "ty": 2
-  },
-  {
-    "id": "181",
-    "map_id": 181,
-    "map": "Cataratas Tohjo",
+    "ty": 2,
+    "id": "180-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 1,
-    "taken": false,
-    "region": 0,
-    "tx": 0,
-    "ty": 13
+    "count": 1
   },
   {
-    "id": "182",
     "map_id": 182,
     "map": "Gimnasio Pokémon",
-    "kinds": [
-      "item"
-    ],
-    "count": 8,
     "taken": false,
     "region": 0,
     "tx": 7,
-    "ty": 10
+    "ty": 10,
+    "id": "182-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 8
   },
   {
-    "id": "183",
     "map_id": 183,
     "map": "Villa Ámbar",
-    "kinds": [
-      "item"
-    ],
-    "count": 3,
     "taken": false,
     "region": 0,
     "tx": 25,
-    "ty": 12
+    "ty": 12,
+    "id": "183-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 3
   },
   {
-    "id": "184",
     "map_id": 184,
     "map": "Ruta 26",
-    "kinds": [
-      "item"
-    ],
-    "count": 2,
     "taken": false,
     "region": 0,
     "tx": 26,
-    "ty": 12
+    "ty": 12,
+    "id": "184-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 2
   },
   {
-    "id": "185",
     "map_id": 185,
     "map": "Villa Azabache",
-    "kinds": [
-      "item"
-    ],
-    "count": 2,
     "taken": false,
     "region": 0,
     "tx": 28,
-    "ty": 12
+    "ty": 12,
+    "id": "185-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 1
   },
   {
-    "id": "186",
     "map_id": 186,
     "map": "Cabo Azabache",
-    "kinds": [
-      "item"
-    ],
-    "count": 4,
     "taken": false,
     "region": 0,
     "tx": 29,
-    "ty": 11
+    "ty": 11,
+    "id": "186-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 4
   },
   {
-    "id": "189",
+    "map_id": 186,
+    "map": "Cabo Azabache",
+    "taken": false,
+    "region": 0,
+    "tx": 29,
+    "ty": 11,
+    "id": "186-nest",
+    "name": "Nido Alfa",
+    "kinds": [
+      "nest"
+    ],
+    "count": 1
+  },
+  {
     "map_id": 189,
     "map": "Ruta 27",
-    "kinds": [
-      "item"
-    ],
-    "count": 5,
     "taken": false,
     "region": 0,
     "tx": 28,
-    "ty": 13
+    "ty": 13,
+    "id": "189-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 4
   },
   {
-    "id": "190",
+    "map_id": 189,
+    "map": "Ruta 27",
+    "taken": false,
+    "region": 0,
+    "tx": 28,
+    "ty": 13,
+    "id": "189-nest",
+    "name": "Nido Alfa",
+    "kinds": [
+      "nest"
+    ],
+    "count": 1
+  },
+  {
     "map_id": 190,
     "map": "Islote Recuerdo",
-    "kinds": [
-      "item"
-    ],
-    "count": 6,
     "taken": false,
     "region": 0,
     "tx": 26,
-    "ty": 15
+    "ty": 15,
+    "id": "190-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 6
   },
   {
-    "id": "191",
+    "map_id": 190,
+    "map": "Islote Recuerdo",
+    "taken": false,
+    "region": 0,
+    "tx": 26,
+    "ty": 15,
+    "id": "190-nest",
+    "name": "Nido Alfa",
+    "kinds": [
+      "nest"
+    ],
+    "count": 1
+  },
+  {
     "map_id": 191,
     "map": "Ruta 28",
-    "kinds": [
-      "item"
-    ],
-    "count": 8,
     "taken": false,
     "region": 0,
     "tx": 27,
-    "ty": 10
+    "ty": 10,
+    "id": "191-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 8
   },
   {
-    "id": "192",
     "map_id": 192,
     "map": "Villa Magenta",
-    "kinds": [
-      "item"
-    ],
-    "count": 1,
     "taken": false,
     "region": 0,
     "tx": 27,
-    "ty": 9
+    "ty": 9,
+    "id": "192-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 1
   },
   {
-    "id": "194",
     "map_id": 194,
     "map": "Ruta 29",
-    "kinds": [
-      "item"
-    ],
-    "count": 4,
     "taken": false,
     "region": 0,
     "tx": 26,
-    "ty": 9
+    "ty": 9,
+    "id": "194-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 3
   },
   {
-    "id": "195",
+    "map_id": 194,
+    "map": "Ruta 29",
+    "taken": false,
+    "region": 0,
+    "tx": 26,
+    "ty": 9,
+    "id": "194-nest",
+    "name": "Nido Alfa",
+    "kinds": [
+      "nest"
+    ],
+    "count": 1
+  },
+  {
     "map_id": 195,
     "map": "Ruta 29",
-    "kinds": [
-      "item"
-    ],
-    "count": 2,
     "taken": false,
     "region": 0,
     "tx": 25,
-    "ty": 9
+    "ty": 9,
+    "id": "195-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 2
   },
   {
-    "id": "196",
     "map_id": 196,
     "map": "Ruta 30",
-    "kinds": [
-      "item"
-    ],
-    "count": 3,
     "taken": false,
     "region": 0,
     "tx": 25,
-    "ty": 8
-  },
-  {
-    "id": "197",
-    "map_id": 197,
-    "map": "Cabo Magenta",
+    "ty": 8,
+    "id": "196-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 7,
+    "count": 3
+  },
+  {
+    "map_id": 197,
+    "map": "Cabo Magenta",
     "taken": false,
     "region": 0,
     "tx": 28,
-    "ty": 9
-  },
-  {
-    "id": "198",
-    "map_id": 198,
-    "map": "Cueva Glaciada",
+    "ty": 9,
+    "id": "197-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 8,
+    "count": 7
+  },
+  {
+    "map_id": 198,
+    "map": "Cueva Glaciada",
     "taken": false,
     "region": 0,
     "tx": 26,
-    "ty": 9
+    "ty": 9,
+    "id": "198-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 8
   },
   {
-    "id": "199",
+    "map_id": 198,
+    "map": "Cueva Glaciada",
+    "taken": false,
+    "region": 0,
+    "tx": 26,
+    "ty": 9,
+    "id": "198-nest",
+    "name": "Nido Alfa",
+    "kinds": [
+      "nest"
+    ],
+    "count": 1
+  },
+  {
     "map_id": 199,
     "map": "Bosque Arcoiris",
-    "kinds": [
-      "item"
-    ],
-    "count": 7,
     "taken": false,
     "region": 0,
     "tx": 25,
-    "ty": 7
+    "ty": 7,
+    "id": "199-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 4
   },
   {
-    "id": "200",
+    "map_id": 199,
+    "map": "Bosque Arcoiris",
+    "taken": false,
+    "region": 0,
+    "tx": 25,
+    "ty": 7,
+    "id": "199-nest",
+    "name": "Nido Alfa",
+    "kinds": [
+      "nest"
+    ],
+    "count": 1
+  },
+  {
     "map_id": 200,
     "map": "Cueva Perdida",
-    "kinds": [
-      "item"
-    ],
-    "count": 1,
     "taken": false,
     "region": 0,
     "tx": 28,
-    "ty": 14
+    "ty": 14,
+    "id": "200-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 1
   },
   {
-    "id": "202",
     "map_id": 202,
     "map": "Casa",
-    "kinds": [
-      "pokemon"
-    ],
-    "count": 1,
     "taken": false,
     "region": 0,
     "tx": 25,
-    "ty": 12
-  },
-  {
-    "id": "203",
-    "map_id": 203,
-    "map": "Casa",
+    "ty": 12,
+    "id": "202-pokemon",
+    "name": "Pokémon",
     "kinds": [
       "pokemon"
     ],
-    "count": 1,
+    "count": 1
+  },
+  {
+    "map_id": 203,
+    "map": "Casa",
     "taken": false,
     "region": 0,
     "tx": 28,
-    "ty": 12
+    "ty": 12,
+    "id": "203-pokemon",
+    "name": "Pokémon",
+    "kinds": [
+      "pokemon"
+    ],
+    "count": 1
   },
   {
-    "id": "204",
     "map_id": 204,
     "map": "Casa",
-    "kinds": [
-      "item"
-    ],
-    "count": 1,
     "taken": false,
     "region": 0,
     "tx": 27,
-    "ty": 9
+    "ty": 9,
+    "id": "204-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 1
   },
   {
-    "id": "205",
     "map_id": 205,
     "map": "Casa",
-    "kinds": [
-      "item",
-      "pokemon"
-    ],
-    "count": 4,
     "taken": false,
     "region": 0,
     "tx": 25,
-    "ty": 9
+    "ty": 9,
+    "id": "205-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 3
   },
   {
-    "id": "206",
-    "map_id": 206,
+    "map_id": 205,
     "map": "Casa",
+    "taken": false,
+    "region": 0,
+    "tx": 25,
+    "ty": 9,
+    "id": "205-pokemon",
+    "name": "Pokémon",
     "kinds": [
-      "item",
       "pokemon"
     ],
-    "count": 2,
+    "count": 1
+  },
+  {
+    "map_id": 206,
+    "map": "Casa",
     "taken": false,
     "region": 0,
     "tx": 29,
-    "ty": 9
+    "ty": 9,
+    "id": "206-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 1
   },
   {
-    "id": "207",
-    "map_id": 207,
-    "map": "Dojo Magenta",
+    "map_id": 206,
+    "map": "Casa",
+    "taken": false,
+    "region": 0,
+    "tx": 29,
+    "ty": 9,
+    "id": "206-pokemon",
+    "name": "Pokémon",
     "kinds": [
       "pokemon"
     ],
-    "count": 1,
+    "count": 1
+  },
+  {
+    "map_id": 207,
+    "map": "Dojo Magenta",
     "taken": false,
     "region": 0,
     "tx": 27,
-    "ty": 9
+    "ty": 9,
+    "id": "207-pokemon",
+    "name": "Pokémon",
+    "kinds": [
+      "pokemon"
+    ],
+    "count": 1
   },
   {
-    "id": "213",
     "map_id": 213,
     "map": "Almacén Secreto",
-    "kinds": [
-      "item"
-    ],
-    "count": 3,
     "taken": false,
     "region": 0,
     "tx": 29,
-    "ty": 14
+    "ty": 14,
+    "id": "213-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 3
   },
   {
-    "id": "214",
     "map_id": 214,
     "map": "Almacén Rocket",
-    "kinds": [
-      "item"
-    ],
-    "count": 4,
     "taken": false,
     "region": 0,
     "tx": 29,
-    "ty": 14
-  },
-  {
-    "id": "216",
-    "map_id": 216,
-    "map": "Ciudad Carmín",
+    "ty": 14,
+    "id": "214-item",
+    "name": "Objetos",
     "kinds": [
       "item"
     ],
-    "count": 5,
+    "count": 4
+  },
+  {
+    "map_id": 216,
+    "map": "Ciudad Carmín",
     "taken": false,
     "region": 0,
     "tx": 17,
-    "ty": 12
+    "ty": 12,
+    "id": "216-item",
+    "name": "Objetos",
+    "kinds": [
+      "item"
+    ],
+    "count": 5
   }
 ]

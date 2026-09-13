@@ -30,7 +30,10 @@ import {
   listTmsForSpecies,
   searchList,
   groupPickups,
+  mergePickups,
+  isIgnoredPickup,
   pickupKindLabel,
+  PICKUP_KINDS,
   tradesForOwned,
   tradeTooltip,
   typeColor,
@@ -717,34 +720,41 @@ const TOWN_ROWS = 20;
 
 function MapPage({ dataset }) {
   const exported = dataset.random?.pickups;
-  const pickups = exported?.length ? exported : defaultPickups;
-  const [remainingOnly, setRemainingOnly] = useState(true);
-  const [showItems, setShowItems] = useState(true);
-  const [showPokemon, setShowPokemon] = useState(true);
+  const pickups = useMemo(
+    () => mergePickups(exported, defaultPickups).filter((p) => !isIgnoredPickup(p)),
+    [exported]
+  );
+  const [remainingOnly, setRemainingOnly] = useState(false);
+  const [visible, setVisible] = useState(() =>
+    Object.fromEntries(PICKUP_KINDS.map((k) => [k.id, true]))
+  );
   const [active, setActive] = useState(null);
 
-  const kinds = [];
-  if (showItems) kinds.push("item");
-  if (showPokemon) kinds.push("pokemon");
+  const kinds = PICKUP_KINDS.filter((k) => visible[k.id]).map((k) => k.id);
+  const hasTakenMarks = (pickups || []).some((p) => p.taken);
 
   const groups = useMemo(
     () => groupPickups(pickups || [], { remainingOnly, kinds }),
-    [pickups, remainingOnly, showItems, showPokemon]
+    [pickups, remainingOnly, visible]
   );
 
   const total = (pickups || []).reduce((n, p) => n + (Number(p.count) || 1), 0);
   const left = (pickups || [])
     .filter((p) => !p.taken && (p.region ?? 0) === 0)
     .reduce((n, p) => n + (Number(p.count) || 1), 0);
+  const done = total - left;
+
+  function toggleKind(id) {
+    setVisible((prev) => ({ ...prev, [id]: !prev[id] }));
+  }
 
   return (
     <div className="map-page">
       <header className="owned-page-head">
         <h2>Mapa de recogidas</h2>
         <p>
-          Pokéballs del suelo y NPCs que entregan objeto o Pokémon. El objeto concreto
-          da igual: se marca el evento. Para tachar lo ya recogido, reinicia Añil,
-          guarda la partida y recarga el atlas.
+          El pin sólido es pendiente. El pin apagado con × ya está hecho. El
+          objeto concreto da igual: se marca el evento.
         </p>
       </header>
       {!pickups.length ? (
@@ -753,56 +763,69 @@ function MapPage({ dataset }) {
         <>
           <div className="map-toolbar">
             <p className="map-count">
-              {exported?.length
-                ? `${left} pendientes · ${total} eventos`
-                : `${total} eventos en el ROM · guarda en Añil para marcar los recogidos`}
+              {hasTakenMarks
+                ? `${left} pendientes · ${done} hechos · ${total} eventos`
+                : `${total} eventos · todavía no hay ninguno marcado como hecho`}
             </p>
-            <div className="map-filters">
-              <label>
-                <input
-                  type="checkbox"
-                  checked={remainingOnly}
-                  onChange={(e) => setRemainingOnly(e.target.checked)}
-                />
-                Solo pendientes
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={showItems}
-                  onChange={(e) => setShowItems(e.target.checked)}
-                />
-                Objetos
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={showPokemon}
-                  onChange={(e) => setShowPokemon(e.target.checked)}
-                />
-                Pokémon
-              </label>
-            </div>
+            <label className="map-remain">
+              <input
+                type="checkbox"
+                checked={remainingOnly}
+                onChange={(e) => setRemainingOnly(e.target.checked)}
+              />
+              Ocultar los hechos
+            </label>
           </div>
+          {!hasTakenMarks ? (
+            <p className="map-warn">
+              Tu JSON no trae lo recogido, por eso nada sale tachado. Cierra Añil,
+              ábrelo manteniendo Ctrl, guarda la partida y vuelve a cargar
+              randomized_data.json.
+            </p>
+          ) : null}
+          <div className="map-state-legend" aria-hidden="true">
+            <span>
+              <i className="map-swatch item" /> Pendiente
+            </span>
+            <span>
+              <i className="map-swatch item is-taken" /> Hecho
+            </span>
+          </div>
+          <ul className="map-legend">
+            {PICKUP_KINDS.map((k) => (
+              <li key={k.id}>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={!!visible[k.id]}
+                    onChange={() => toggleKind(k.id)}
+                  />
+                  <span className={`map-swatch ${k.tone}`} aria-hidden="true" />
+                  <span>
+                    <strong>{k.label}</strong>
+                    <em>{k.blurb}</em>
+                    <em className="map-taken-note">{k.taken}</em>
+                  </span>
+                </label>
+              </li>
+            ))}
+          </ul>
           <div className="town-map">
             <img src="/mapRegion0.png" alt="Mapa de Kanto en Añil" />
             {groups.map((g) => {
               const key = `${g.tx},${g.ty}`;
-              const hasItem = g.items.some((i) => (i.kinds || []).includes("item"));
-              const hasPkmn = g.items.some((i) => (i.kinds || []).includes("pokemon"));
-              const tone = hasItem && hasPkmn ? "mix" : hasPkmn ? "pkmn" : "item";
               return (
                 <button
                   key={key}
                   type="button"
-                  className={`map-pin ${tone} ${active === key ? "on" : ""}`}
+                  className={`map-pin ${g.tone} ${g.allTaken ? "is-taken" : ""} ${active === key ? "on" : ""}`}
                   style={{
                     left: `${((g.tx + 0.5) / TOWN_COLS) * 100}%`,
                     top: `${((g.ty + 0.5) / TOWN_ROWS) * 100}%`,
                   }}
                   onClick={() => setActive(active === key ? null : key)}
                 >
-                  {g.count}
+                  {g.allTaken ? "×" : g.count}
                 </button>
               );
             })}
@@ -812,12 +835,12 @@ function MapPage({ dataset }) {
               {groups
                 .find((g) => `${g.tx},${g.ty}` === active)
                 ?.items.map((ev) => (
-                  <li key={ev.id}>
+                  <li key={ev.id} className={ev.taken ? "is-taken" : ""}>
                     <strong>{ev.map || `Mapa ${ev.map_id}`}</strong>
                     <span>
                       {(ev.kinds || []).map(pickupKindLabel).join(" · ")}
                       {ev.name ? ` · ${ev.name}` : ""}
-                      {ev.taken ? " · Recogido" : " · Pendiente"}
+                      {ev.taken ? " · Hecho" : " · Pendiente"}
                     </span>
                   </li>
                 ))}

@@ -19,34 +19,109 @@ for (const { rawId, fields } of meta) {
   };
 }
 
+function countAll(text, needle) {
+  let n = 0;
+  let i = 0;
+  while (true) {
+    const p = text.indexOf(needle, i);
+    if (p < 0) return n;
+    n++;
+    i = p + needle.length;
+  }
+}
+
+function countNpcItems(text) {
+  let n = 0;
+  let i = 0;
+  while (true) {
+    const p = text.indexOf("pbReceiveItem", i);
+    if (p < 0) return n;
+    const before = text.slice(Math.max(0, p - 420), p);
+    if (!/ha huido|nidoIncursion|CombateNido|ALBUMFOTOS|PartyPicture|Fot[oó]grafo/i.test(before)) n++;
+    i = p + 13;
+  }
+}
+
+const LEADERS = [
+  "LIDER1HOENN",
+  "LIDER2HOENN",
+  "LIDER3HOENN",
+  "LIDER4HOENN",
+  "LIDER5HOENN",
+  "LIDER6HOENN",
+  "LIDER7HOENN",
+  "LIDER8HOENN",
+];
+
 const dir = join(root, "Data");
-const itemRx = /pbItemBall|pbReceiveItem|pbHiddenItem/g;
-const pkmnRx = /pbAddPokemonSilent|pbAddPokemon|pbGivePokemon|pbStartTrade|pbReceivePokemon/g;
+const pkmnRx = /pbAddPokemonSilent|pbAddPokemon|pbGivePokemon|pbReceivePokemon/g;
 const pickups = [];
+
 for (const file of readdirSync(dir)) {
   if (!/^Map\d+\.rxdata$/i.test(file)) continue;
   const id = Number(file.match(/\d+/)[0]);
   const text = readFileSync(join(dir, file)).toString("latin1");
-  const items = [...text.matchAll(itemRx)].length;
-  const pkmn = [...text.matchAll(pkmnRx)].length;
-  if (!items && !pkmn) continue;
   const info = maps[id] || { name: `Mapa ${id}`, region: 0, tx: null, ty: null };
-  const kinds = [];
-  if (items) kinds.push("item");
-  if (pkmn) kinds.push("pokemon");
-  pickups.push({
-    id: String(id),
+  const base = {
     map_id: id,
     map: info.name,
-    kinds,
-    count: items + pkmn,
     taken: false,
     region: info.region ?? 0,
     tx: info.tx,
     ty: info.ty,
-  });
+  };
+
+  const balls = countAll(text, "pbItemBall");
+  const npcItems = countNpcItems(text);
+  const items = balls + npcItems;
+  const pkmn = [...text.matchAll(pkmnRx)].length;
+  const nests = countAll(text, "CombateNido");
+  const leaders = LEADERS.filter((k) => text.includes(k)).length;
+
+  if (items) {
+    pickups.push({
+      ...base,
+      id: `${id}-item`,
+      name: "Objetos",
+      kinds: ["item"],
+      count: items,
+    });
+  }
+  if (pkmn) {
+    pickups.push({
+      ...base,
+      id: `${id}-pokemon`,
+      name: "Pokémon",
+      kinds: ["pokemon"],
+      count: pkmn,
+    });
+  }
+  if (nests) {
+    pickups.push({
+      ...base,
+      id: `${id}-nest`,
+      name: "Nido Alfa",
+      kinds: ["nest"],
+      count: nests,
+    });
+  }
+  if (leaders) {
+    pickups.push({
+      ...base,
+      id: `${id}-leader`,
+      name: "Líder exótico",
+      kinds: ["leader"],
+      count: leaders,
+    });
+  }
 }
 
 writeFileSync(join(import.meta.dirname, "../src/pickups.json"), JSON.stringify(pickups, null, 2));
 const placed = pickups.filter((p) => p.tx != null && p.region === 0);
-console.log(`total ${pickups.length} · kanto ${placed.length} · sin casilla ${pickups.filter((p) => p.tx == null).length}`);
+const byKind = pickups.reduce((acc, p) => {
+  for (const k of p.kinds) acc[k] = (acc[k] || 0) + (p.count || 1);
+  return acc;
+}, {});
+console.log(
+  `filas ${pickups.length} · kanto ${placed.length} · ${JSON.stringify(byKind)}`
+);
